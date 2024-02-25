@@ -1,1 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.main-container {
+  width: min(90%, 75rem);
+  margin: 0 auto;
+}
+
+.ubuntu-mono {
+  font-family: "Ubuntu Mono", monospace;
+}
+
+.raleway {
+  font-family: "Raleway", sans-serif;
+}
+
+.noto-serif-display {
+  font-family: "Noto Serif Display", serif;
+}

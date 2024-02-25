@@ -1,0 +1,43 @@
+<div class="w-full lg:flex py-8 ">
+  <div class="lg:w-5/12 bg-blue-400 rounded-t-xl lg:rounded-l-xl lg:rounded-tr-none">
+    <div class="py-4 mx-5">
+      <picture>
+        <source srcset="../../../../assets/img/logo.avif" type="image/avif">
+        <source srcset="../../../../assets/img/logo.webp" type="image/webp">
+        <source srcset="../../../../assets/img/logo.png" type="image/png">
+        <img loading="lazy" src="../../../../assets/img/logo.png" alt="Logo de la empresa">
+      </picture>
+    </div>
+
+    <div class="hidden max-w-72 mx-auto pb-8 lg:block">
+      <picture>
+        <source srcset="../../../../assets/img/login.avif" type="image/avif">
+        <source srcset="../../../../assets/img/login.webp" type="image/webp">
+        <source srcset="../../../../assets/img/login.png" type="image/png">
+        <img loading="lazy" src="../../../../assets/img/login.png" alt="Imagen de login">
+      </picture>
+    </div>
+  </div>
+  <div class="bg-white p-4 flex flex-col rounded-b-xl lg:rounded-r-xl lg:rounded-bl-none">
+    <div class="mb-8 mt-5">
+      <h1 class="ubuntu-mono text-center font-bold text-4xl lg:text-5xl lg:mx-16">
+        Bienvenido de vuelta
+      </h1>
+    </div>
+    <div class="w-full">
+        <form class="flex flex-col mx-14">
+          <mat-form-field class="mb-4">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Ex. correo@mail.com" value="">
+            <mat-icon matSuffix>mail</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class="">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Ex. **************" value="">
+            <mat-icon matSuffix>password</mat-icon>
+          </mat-form-field>
+        </form>
+    </div>
+  </div>
+</div>
