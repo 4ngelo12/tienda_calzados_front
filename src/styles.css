@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --ubuntu-mono: "Ubuntu Mono", monospace;
+  --raleway: "Raleway", sans-serif;
+  --noto-serif-display: "Noto Serif Display", serif;
+}
 
 html,
 body {
@@ -19,14 +24,18 @@ body {
   margin: 0 auto;
 }
 
-.ubuntu-mono {
-  font-family: "Ubuntu Mono", monospace;
+.login-tittle {
+  font-family: var(--ubuntu-mono)
 }
 
-.raleway {
-  font-family: "Raleway", sans-serif;
+.login-url {
+  color: rgb(75 85 99);
 }
 
-.noto-serif-display {
-  font-family: "Noto Serif Display", serif;
+.login-url:hover {
+  color: rgb(8 145 178)
+}
+
+.btn-text {
+  font-size: 1rem;
 }
