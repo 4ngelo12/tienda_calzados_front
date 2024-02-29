@@ -16,7 +16,10 @@ module.exports = {
         'buttons-background-dark': '#398fe5',
         'buttons-background--darkhover': '#2e7ac2',
         'form-background-dark': '#434E5A',
-      }
+      },
+      width: {
+        'calc-50': 'calc(50% - 1.25rem)',
+      },
     },
   },
   plugins: [],

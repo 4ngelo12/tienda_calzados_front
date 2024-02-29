@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CompartidoModule } from './compartido/compartido.module';
 import { LoginComponent } from './pages/users/login/login.component';
+import { RegisterComponent } from './users/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
