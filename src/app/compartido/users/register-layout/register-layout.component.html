@@ -50,6 +50,15 @@
               <mat-icon matSuffix>mail</mat-icon>
             </mat-form-field>
 
+
+            <!-- <mat-form-field class="w-full lg:w-calc-50 dark:text-white">
+              <mat-label class="dark:text-white">Fecha Nacimiento</mat-label>
+              <input matInput [matDatepicker]="picker">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field> -->
+
             <mat-form-field class="w-full lg:w-calc-50 dark:text-white">
               <mat-label class="dark:text-white">Fecha Nacimiento</mat-label>
               <input matInput  value="">
@@ -71,10 +80,10 @@
             </mat-form-field>
           </div>
 
-            <div class="mt-7 mb-6">
+            <div class="mt-7 mb-6 flex flex-col items-center">
               <button mat-raised-button
-                class="w-full bg-buttons-background btn-text hover:bg-buttons-background-hover">Registrar</button>
-              <p class="mt-2 lg:text-sm">¿Ya tienes una cuenta?, <a href="#" class="login-url">Inicia Sesión</a></p>
+                class="w-full lg:w-1/2 bg-buttons-background btn-text hover:bg-buttons-background-hover">Registrar</button>
+              <p class="mt-2 lg:text-sm">¿Ya tienes una cuenta?, <a [routerLink]="['/login']" class="login-url">Inicia Sesión</a></p>
             </div>
           </div>
         </form>

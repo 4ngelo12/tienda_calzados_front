@@ -31,14 +31,14 @@
         <form>
           <div class="flex flex-col mx-6 lg:mx-14">
             <mat-form-field class="mb-4 dark:text-white">
-              <mat-label class="dark:text-white">Email</mat-label>
+              <mat-label class="dark:text-white">Correo</mat-label>
               <input matInput placeholder="Ex. correo@mail.com" value="">
               <mat-icon matSuffix>mail</mat-icon>
             </mat-form-field>
 
             <div class="mb-4">
               <mat-form-field class="w-full dark:text-white">
-                <mat-label class="dark:text-white">Password</mat-label>
+                <mat-label class="dark:text-white">Contraseña</mat-label>
                 <input matInput placeholder="Ex. **************" value="">
                 <mat-icon matSuffix>password</mat-icon>
               </mat-form-field>
@@ -47,8 +47,8 @@
 
             <div class="mt-7 mb-6">
               <button mat-raised-button
-                class="w-full bg-buttons-background btn-text hover:bg-buttons-background-hover">Primary</button>
-              <p class="mt-2 lg:text-sm">¿Eres nuevo aquí?, <a href="#" class="login-url">Crea
+                class="w-full bg-buttons-background btn-text hover:bg-buttons-background-hover">Ingresar</button>
+              <p class="mt-2 lg:text-sm">¿Eres nuevo aquí?, <a [routerLink]="['/register']" class="login-url">Crea
                   una cuenta ahora</a></p>
             </div>
           </div>

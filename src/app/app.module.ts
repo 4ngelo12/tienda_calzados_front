@@ -4,8 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CompartidoModule } from './compartido/compartido.module';
-import { LoginComponent } from './pages/users/login/login.component';
-import { RegisterComponent } from './users/register/register.component';
+import { AppRouterModule } from './app-router.module';
+import { LoginComponent } from './pages/users/login';
+import { RegisterComponent } from './pages/users/register';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { RegisterComponent } from './users/register/register.component';
     BrowserModule,
     BrowserAnimationsModule,
     CompartidoModule,
-    CompartidoModule
+    AppRouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

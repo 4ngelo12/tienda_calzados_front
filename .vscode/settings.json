@@ -1,0 +1,6 @@
+{
+    "exportall.config.relExclusion": [
+        "/src/app/compartido/compartido.module.ts",
+        "/src/app/compartido"
+    ]
+}
