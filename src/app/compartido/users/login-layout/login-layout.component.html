@@ -1,5 +1,6 @@
 <div class="w-full flex flex-col gap-10 lg:flex-row lg:gap-0 lg:justify-center py-8 ">
-  <div class="lg:w-5/12 bg-general-background dark:bg-general-background-dark rounded-xl lg:rounded-l-xl lg:rounded-tr-none lg:rounded-br-none">
+  <div
+    class="lg:w-5/12 bg-general-background dark:bg-general-background-dark rounded-xl lg:rounded-l-xl lg:rounded-tr-none lg:rounded-br-none">
     <div class="py-4 mx-5">
       <picture>
         <source srcset="../../../../assets/img/general/logo.avif" type="image/avif">
@@ -28,18 +29,20 @@
       </div>
 
       <div>
-        <form>
+        <form [formGroup]="parentLoginForm" (ngSubmit)="loginSubmit()">
           <div class="flex flex-col mx-6 lg:mx-14">
             <mat-form-field class="mb-4 dark:text-white">
               <mat-label class="dark:text-white">Correo</mat-label>
-              <input matInput placeholder="Ex. correo@mail.com" value="">
+              <input matInput placeholder="Ex. correo@mail.com" formControlName="username" required value="">
+              <mat-error>{{getErrorMessageEmail()}}</mat-error>
               <mat-icon matSuffix>mail</mat-icon>
             </mat-form-field>
 
             <div class="mb-4">
               <mat-form-field class="w-full dark:text-white">
                 <mat-label class="dark:text-white">Contraseña</mat-label>
-                <input matInput placeholder="Ex. **************" value="">
+                <input matInput type="password" placeholder="Ex. **************" formControlName="password" required value="">
+                <mat-error>{{getErrorMessagePassword()}}</mat-error>
                 <mat-icon matSuffix>password</mat-icon>
               </mat-form-field>
               <a href="#" class="lg:text-sm login-url">¿Has olvidado tu constraseña?</a>

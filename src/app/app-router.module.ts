@@ -4,14 +4,16 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/users/login/login.component';
 import { RegisterComponent } from './pages/users/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
+import { UserGuard } from './core/guards/user.guard';
+import { WithoutSaveGuard } from './core/guards';
 
 const routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
-    path: 'home', component: HomeComponent, pathMatch: 'full'
+    path: 'home', component: HomeComponent, pathMatch: 'full', canActivate: [UserGuard]
   },
   {
-    path: 'login', component: LoginComponent, pathMatch: 'full'
+    path: 'login', canDeactivate: [WithoutSaveGuard], component: LoginComponent, pathMatch: 'full'
   },
   {
     path: 'register', component: RegisterComponent, pathMatch: 'full'

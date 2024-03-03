@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsersService } from 'src/app/core/services';
 
 @Component({
   selector: 'app-register-layout',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterLayoutComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, user :UsersService) { }
 
   ngOnInit(): void {
   }
