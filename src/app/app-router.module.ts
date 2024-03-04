@@ -16,7 +16,7 @@ const routes = [
     path: 'login', canDeactivate: [WithoutSaveGuard], component: LoginComponent, pathMatch: 'full'
   },
   {
-    path: 'register', component: RegisterComponent, pathMatch: 'full'
+    path: 'register', canDeactivate: [WithoutSaveGuard], component: RegisterComponent, pathMatch: 'full'
   },
   {
     path: '**', redirectTo: '/home', pathMatch: 'full'

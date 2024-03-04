@@ -17,7 +17,7 @@ export class LoginLayoutComponent implements OnInit {
   loginData: Login = {} as Login;
   
   constructor(private user: UsersService, private lsService: LocalStorageService,
-    private router: Router, private snack: MatSnackBar, private fb: FormBuilder) { }
+    private router: Router, private snack: MatSnackBar) { }
 
   ngOnInit(): void { }
 
@@ -33,6 +33,7 @@ export class LoginLayoutComponent implements OnInit {
           this.snack.open('Bienvenido', 'Cerrar', {
             duration: 2000
           });
+          this.parentLoginForm.reset();
           this.router.navigate(['/home']);
           this.user.getCurrentUser().subscribe(
             (user: any) => {

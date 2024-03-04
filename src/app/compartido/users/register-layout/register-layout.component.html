@@ -29,53 +29,49 @@
       </div>
 
       <div>
-        <form>
+        <form [formGroup]="parentRegisterForm" (ngSubmit)="registerSubmit()">
           <div class="flex flex-col mx-6 lg:mx-14">
            <div class="flex justify-between flex-wrap">
             <mat-form-field class="w-full lg:w-calc-50 dark:text-white">
               <mat-label class="dark:text-white">Nombre</mat-label>
-              <input matInput placeholder="Ex. correo@mail.com" value="">
+              <input matInput placeholder="Ex. Mario" formControlName="name" required>
+              <mat-error>{{getErrorMessageName()}}</mat-error>
               <mat-icon matSuffix>person</mat-icon>
             </mat-form-field>
 
             <mat-form-field class="w-full lg:w-calc-50 dark:text-white">
               <mat-label class="dark:text-white">Apellido</mat-label>
-              <input matInput placeholder="Ex. correo@mail.com" value="">
+              <input matInput placeholder="Ex. Arguedas" formControlName="lastname" required>
+              <mat-error>{{getErrorMessageLastName()}}</mat-error>
               <mat-icon matSuffix>person</mat-icon>
             </mat-form-field>
 
             <mat-form-field class="w-full lg:w-calc-50 dark:text-white">
-              <mat-label class="dark:text-white">Email</mat-label>
-              <input matInput placeholder="Ex. correo@mail.com" value="">
+              <mat-label class="dark:text-white">Correo</mat-label>
+              <input matInput placeholder="Ex. correo@mail.com" formControlName="email" required>
+              <mat-error>{{getErrorMessageEmail()}}</mat-error>
               <mat-icon matSuffix>mail</mat-icon>
             </mat-form-field>
 
-
-            <!-- <mat-form-field class="w-full lg:w-calc-50 dark:text-white">
-              <mat-label class="dark:text-white">Fecha Nacimiento</mat-label>
-              <input matInput [matDatepicker]="picker">
-              <mat-hint>MM/DD/YYYY</mat-hint>
-              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field> -->
-
             <mat-form-field class="w-full lg:w-calc-50 dark:text-white">
               <mat-label class="dark:text-white">Fecha Nacimiento</mat-label>
-              <input matInput  value="">
-              <mat-hint>MM/DD/YYYY</mat-hint>
-              <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker> -->
+              <input matInput [matDatepicker]="picker" formControlName="birthdate" placeholder="MM/DD/YYYY">
+              <mat-error>{{getErrorMessageBirthDate()}}</mat-error>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
 
             <mat-form-field class="w-full lg:w-calc-50 dark:text-white">
               <mat-label class="dark:text-white">Contraseña</mat-label>
-              <input matInput placeholder="Ex. **************" value="">
+              <input matInput type="password" placeholder="Ex. **************" formControlName="password">
+              <mat-error>{{getErrorMessagePassword()}}</mat-error>
               <mat-icon matSuffix>password</mat-icon>
             </mat-form-field>
 
             <mat-form-field class="w-full lg:w-calc-50 dark:text-white">
               <mat-label class="dark:text-white">Confirmar Contraseña</mat-label>
-              <input matInput placeholder="Ex. **************" value="">
+              <input matInput type="password" placeholder="Ex. **************" formControlName="passwordConfirm">
+              <mat-error>{{getErrorMessagePasswordConfirm()}}</mat-error>
               <mat-icon matSuffix>password</mat-icon>
             </mat-form-field>
           </div>
