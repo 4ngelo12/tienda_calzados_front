@@ -18,6 +18,11 @@ export class UsersService {
     return this.http.post(`${baserUrl}/auth/login`, user);
   }
 
+  public logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+  }
+
   // Obtener datos del usuario
   public getCurrentUser() {
     return this.http.get(`${baserUrl}/user`);
