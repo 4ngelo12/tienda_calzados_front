@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
-import { CompartidoModule } from 'src/app/compartido/compartido.module';
 import { LocalStorageService, UsersService } from 'src/app/core/services';
+import { SharedModule } from 'src/app/shared';
 
 
 @NgModule({
@@ -13,7 +13,7 @@ import { LocalStorageService, UsersService } from 'src/app/core/services';
   ],
   imports: [
     CommonModule,
-    CompartidoModule
+    SharedModule
   ],
   exports: [
     LoginComponent,

@@ -20,6 +20,15 @@ module.exports = {
       width: {
         'calc-50': 'calc(50% - 1.25rem)',
       },
+      height: {
+        'screen-60': '60vh',
+        'screen-80': '80vh',
+      },
+      fontFamily: {
+        'noto-serif-display': '"Noto Serif Display", serif',
+        'raleway': '"Raleway", sans-serif',
+        'ubuntu-mono': '"Ubuntu Mono", monospace' 
+      }
     },
   },
   plugins: [],

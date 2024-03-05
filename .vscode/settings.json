@@ -2,6 +2,7 @@
     "exportall.config.relExclusion": [
         "/src/app/compartido/compartido.module.ts",
         "/src/app/compartido",
-        "/src/app/pages/users/users.module.ts"
+        "/src/app/pages/users/users.module.ts",
+        "/src/app/shared"
     ]
 }

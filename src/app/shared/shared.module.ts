@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginLayoutComponent } from './users/login-layout';
-import { MaterialModule } from '../modules/material/material.module';
+import { MaterialModule } from '../modules/material';
 import { AppRouterModule } from '../app-router.module';
-import { RegisterLayoutComponent } from './users/register-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './navbar';
+import { LoginLayoutComponent, RegisterLayoutComponent } from './users';
+import { NotfoundComponent } from './notfound';
+
 
 
 @NgModule({
   declarations: [
     LoginLayoutComponent,
-    RegisterLayoutComponent
+    RegisterLayoutComponent,
+    NavbarComponent,
+    NotfoundComponent
   ],
   imports: [
     CommonModule,
@@ -20,8 +24,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   exports: [
+    NavbarComponent,
     LoginLayoutComponent,
-    RegisterLayoutComponent
+    RegisterLayoutComponent,
+    NotfoundComponent
   ]
 })
-export class CompartidoModule { }
+export class SharedModule { }

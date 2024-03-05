@@ -6,11 +6,12 @@ import { RegisterComponent } from './pages/users/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UserGuard } from './core/guards/user.guard';
 import { WithoutSaveGuard } from './core/guards';
+import { NotfoundComponent } from './shared/notfound';
 
 const routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
-    path: 'home', component: HomeComponent, pathMatch: 'full', canActivate: [UserGuard]
+    path: 'home', component: HomeComponent, pathMatch: 'full'
   },
   {
     path: 'login', canDeactivate: [WithoutSaveGuard], component: LoginComponent, pathMatch: 'full'
@@ -19,7 +20,7 @@ const routes = [
     path: 'register', canDeactivate: [WithoutSaveGuard], component: RegisterComponent, pathMatch: 'full'
   },
   {
-    path: '**', redirectTo: '/home', pathMatch: 'full'
+    path: '**', component: NotfoundComponent
   }
 ];
 

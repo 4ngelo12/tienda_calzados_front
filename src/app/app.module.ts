@@ -7,6 +7,7 @@ import { AppRouterModule } from './app-router.module';
 import { UsersModule } from './pages/users/users.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
+import { SharedModule } from './shared';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
     AppRouterModule,
     HttpClientModule,
     UsersModule,
+    SharedModule
   ],
   providers: [
     {
