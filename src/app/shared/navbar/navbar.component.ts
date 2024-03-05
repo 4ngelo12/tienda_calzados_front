@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/core/services';
 
 @Component({
   selector: 'app-navbar',
@@ -8,30 +9,48 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  token: any;
+  navbar!: ElementRef;
 
-  ocultarNavbar() {
-    const navbar = document.querySelector('#navbar');
-    if (navbar) {
-      navbar.classList.add('hidden');
+  constructor(private router: Router, private ls: LocalStorageService, private renderer: Renderer2, private el: ElementRef,
+    private cdr: ChangeDetectorRef) {
+  }
+
+  hiddenNavbar() {
+    if (this.navbar) {
+      this.rechargeComponent();
+      this.renderer.addClass(this.navbar, 'hidden');
     }
   }
 
-  mostrarNavbar() {
-    const navbar = document.querySelector('#navbar');
-    if (navbar) {
-      navbar.classList.remove('hidden');
+  showNavbar() {
+    if (this.navbar) {
+      this.rechargeComponent();
+      this.renderer.removeClass(this.navbar, 'hidden');
     }
   }
 
   ngOnInit(): void {
+    this.navbar = this.el.nativeElement.querySelector('#navbar');
+    this.tokenAvailable();
+
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const rutaActual = this.router.url;
-        console.log(rutaActual);
-        (rutaActual !== '/login' && rutaActual !== '/register') ? this.mostrarNavbar() : this.ocultarNavbar();
+        (rutaActual !== '/login' && rutaActual !== '/register') ? this.showNavbar() : this.hiddenNavbar();
       }
     });
+  }
+
+  tokenAvailable() {
+    this.token = this.ls.getToken();
+  }
+
+  rechargeComponent() {
+    this.token = ""
+    this.tokenAvailable();
+
+    this.cdr.detectChanges();
   }
 
 

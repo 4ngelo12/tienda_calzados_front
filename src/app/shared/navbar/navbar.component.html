@@ -23,9 +23,14 @@
         </button>
 
         <button mat-icon-button>
-            <a [routerLink]="['/login']" class="flex justify-center items-center">
+            <a *ngIf="token; else elseBlock" [routerLink]="['/login']" class="flex justify-center items-center">
                 <mat-icon class="text-4xl">account_circle</mat-icon>
             </a>
+            <ng-template #elseBlock>
+                <a [routerLink]="['/login']" #elseBlock class="flex justify-center items-center">
+                    <mat-icon class="text-4xl">add</mat-icon>
+                </a>
+            </ng-template>
         </button>
 
         <div>

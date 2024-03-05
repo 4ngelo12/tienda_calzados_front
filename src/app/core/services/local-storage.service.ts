@@ -14,11 +14,17 @@ export class LocalStorageService {
     return true;
   }
 
+  // Obtener token de inicio de sesion
+  public getToken() {
+    return localStorage.getItem('token');
+  }
+
   // Guardar datos de la sesion
   public setUser(user: any) {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
+  // Validar la vigencia del token
   public validateToken(): boolean {
     const token = localStorage.getItem('token');
 

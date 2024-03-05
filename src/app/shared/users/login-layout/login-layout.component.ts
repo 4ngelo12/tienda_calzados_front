@@ -15,7 +15,7 @@ export class LoginLayoutComponent implements OnInit {
   @Input()
   parentLoginForm!: FormGroup;
   loginData: Login = {} as Login;
-  
+
   constructor(private user: UsersService, private lsService: LocalStorageService,
     private router: Router, private snack: MatSnackBar) { }
 
@@ -34,7 +34,7 @@ export class LoginLayoutComponent implements OnInit {
             duration: 2000
           });
           this.parentLoginForm.reset();
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home'])
           this.user.getCurrentUser().subscribe(
             (user: any) => {
               this.lsService.setUser(user);
