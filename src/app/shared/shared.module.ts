@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar';
 import { LoginLayoutComponent, RegisterLayoutComponent } from './users';
 import { NotfoundComponent } from './notfound';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -14,7 +15,8 @@ import { NotfoundComponent } from './notfound';
     LoginLayoutComponent,
     RegisterLayoutComponent,
     NavbarComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { NotfoundComponent } from './notfound';
     NavbarComponent,
     LoginLayoutComponent,
     RegisterLayoutComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    FooterComponent,
   ]
 })
 export class SharedModule { }
