@@ -28,6 +28,9 @@ module.exports = {
         'home-cards-md': '29.688rem',
         'home-cards-mobile': '33.72rem',
       },
+      width: {
+        'product-descrition': '38rem'
+      },
       fontFamily: {
         'noto-serif-display': '"Noto Serif Display", serif',
         'raleway': '"Raleway", sans-serif',
