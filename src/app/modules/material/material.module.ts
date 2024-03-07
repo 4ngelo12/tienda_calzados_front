@@ -9,9 +9,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatCardModule } from '@angular/material/card';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
@@ -29,9 +26,6 @@ import { MatDividerModule } from '@angular/material/divider';
     MatNativeDateModule,
     MatToolbarModule,
     MatMenuModule,
-    MatCardModule,
-    MatPaginatorModule,
-    MatDividerModule
   ],
 })
 export class MaterialModule { }

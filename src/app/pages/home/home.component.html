@@ -23,7 +23,7 @@
         <div *ngFor="let item of ProductData | productsFilter:page:search">
             <div *ngIf="item.active" class="bg-white dark:bg-component-dark p-4 rounded-md h-home-cards-mobile 
                 md:h-home-cards-md lg:h-home-cards flex items-center">
-                <a href="#" class="group">
+                <a class="group" (click)="showProduct(item.id)">
                     <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200">
                         <img loading="lazy"
                             src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"

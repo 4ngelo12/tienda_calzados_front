@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Products } from 'src/app/core/interfaces';
 import { ProductsFilterPipe } from 'src/app/core/pipes';
 import { ProductsService } from 'src/app/core/services';
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   ProductData: Products[] = [];
   search: string = '';
 
-  constructor(private prodService: ProductsService) { }
+  constructor(private prodService: ProductsService, private route: Router) { }
 
 
   ngOnInit(): void {
@@ -25,12 +26,16 @@ export class HomeComponent implements OnInit {
     this.prodService.getProducts().subscribe({
       next: (res: any) => {
         this.ProductData = res;
-        console.log(res);
       },
       error: (err) => {
         console.log(err);
       }
     });
+  }
+
+  showProduct(id: number) {
+    console.log(id);
+    this.route.navigate(['/products', id]);
   }
 
   // Controles para la paginación

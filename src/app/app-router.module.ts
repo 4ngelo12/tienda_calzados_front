@@ -19,6 +19,14 @@ const routes = [
     path: 'register', canDeactivate: [WithoutSaveGuard], component: RegisterComponent, pathMatch: 'full'
   },
   {
+    path: 'products',
+    loadChildren: () => import('./pages').then(m => m.ProductsModule)
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./pages/users/users.module').then(m => m.UsersModule)
+  },
+  {
     path: '**', component: NotfoundComponent
   }
 ];
