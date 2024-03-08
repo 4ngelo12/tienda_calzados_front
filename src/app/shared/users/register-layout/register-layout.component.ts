@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/core/interfaces/users';
+import { User } from 'src/app/core/interfaces';
 import { UsersService } from 'src/app/core/services';
 
 @Component({
@@ -13,7 +13,7 @@ import { UsersService } from 'src/app/core/services';
 export class RegisterLayoutComponent implements OnInit {
   @Input()
   parentRegisterForm!: FormGroup;
-  RegisterData: Usuario = {} as Usuario;
+  RegisterData: User = {} as User;
 
   constructor(private user: UsersService, private router: Router, private snack: MatSnackBar) { }
 
@@ -41,7 +41,7 @@ export class RegisterLayoutComponent implements OnInit {
       this.user.register(this.RegisterData).subscribe({
         next: (res: any) => {
           console.log(res);
-          this.snack.open('Usuario registrado', 'Aceptar', {
+          this.snack.open('User registrado', 'Aceptar', {
             duration: 5000
           });
 
@@ -49,7 +49,7 @@ export class RegisterLayoutComponent implements OnInit {
         },
         error: (err) => {
           console.log(err);
-          this.snack.open('Error al registrar usuario', 'Aceptar', {
+          this.snack.open('Error al registrar User', 'Aceptar', {
             duration: 5000
           });
         },

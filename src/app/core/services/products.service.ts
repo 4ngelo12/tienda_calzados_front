@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import baserUrl from './helper';
 import { Products, ProductsResponse } from '../interfaces';
 import { Observable, map } from 'rxjs';
+import baseUrl from './helper';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
   public getProducts(): Observable<Products[]> {
-    return this.http.get<ProductsResponse>(`${baserUrl}/products?size=6`)
+    return this.http.get<ProductsResponse>(`${baseUrl}/products?size=6`)
       .pipe(
         map( this.transformData)
       );
@@ -39,6 +39,6 @@ export class ProductsService {
   }
 
   public getProductById(id: number) {
-    return this.http.get(`${baserUrl}/products/${id}`)
+    return this.http.get(`${baseUrl}/products/${id}`)
   }
 }

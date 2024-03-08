@@ -24,6 +24,10 @@ export class LocalStorageService {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
+  public getUser() {
+    return JSON.parse(localStorage.getItem('user')!);
+  }
+
   // Validar la vigencia del token
   public validateToken(): boolean {
     const token = localStorage.getItem('token');

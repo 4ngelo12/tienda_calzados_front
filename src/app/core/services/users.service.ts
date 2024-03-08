@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import baserUrl from './helper';
-import { Login, Usuario } from '../interfaces/users';
+import baseUrl from './helper';
+import { Login, User } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +10,12 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  public register(user: Usuario) {
-    return this.http.post(`${baserUrl}/auth/register`, user);
+  public register(user: User) {
+    return this.http.post(`${baseUrl}/auth/register`, user);
   }
 
   public login(user: Login) {
-    return this.http.post(`${baserUrl}/auth/login`, user);
+    return this.http.post(`${baseUrl}/auth/login`, user);
   }
 
   public logout() {
@@ -23,8 +23,8 @@ export class UsersService {
     localStorage.removeItem('user');
   }
 
-  // Obtener datos del usuario
+  // Obtener datos del User
   public getCurrentUser() {
-    return this.http.get(`${baserUrl}/user`);
+    return this.http.get(`${baseUrl}/user`);
   }
 }

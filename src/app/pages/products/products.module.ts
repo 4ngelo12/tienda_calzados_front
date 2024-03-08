@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductComponent } from './product/product.component';
-import { ProductsService } from 'src/app/core/services';
+import { ProductsService, ShoppingCartService } from 'src/app/core/services';
 import { ProductsRouterModule } from './products-router.module';
 import { MaterialModule } from 'src/app/modules/material';
 
@@ -20,7 +20,8 @@ import { MaterialModule } from 'src/app/modules/material';
     ProductComponent
   ],
   providers: [
-    ProductsService
+    ProductsService,
+    ShoppingCartService
   ]
 })
 export class ProductsModule { }

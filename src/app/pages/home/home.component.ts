@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Products } from 'src/app/core/interfaces';
 import { ProductsFilterPipe } from 'src/app/core/pipes';
-import { ProductsService } from 'src/app/core/services';
+import { LocalStorageService, ProductsService } from 'src/app/core/services';
 
 @Component({
   selector: 'app-home',
@@ -15,11 +15,13 @@ export class HomeComponent implements OnInit {
   ProductData: Products[] = [];
   search: string = '';
 
-  constructor(private prodService: ProductsService, private route: Router) { }
+  constructor(private prodService: ProductsService, private lsService: LocalStorageService, private route: Router,
+    private cdr: ChangeDetectorRef) { }
 
 
-  ngOnInit(): void {
-    this.getProducts();
+  async ngOnInit() {
+    this.lsService.validateToken();
+    await this.getProducts();
   }
 
   getProducts() {
@@ -34,7 +36,6 @@ export class HomeComponent implements OnInit {
   }
 
   showProduct(id: number) {
-    console.log(id);
     this.route.navigate(['/products', id]);
   }
 

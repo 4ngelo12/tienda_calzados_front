@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   token: any;
   navbar!: ElementRef;
 
-  constructor(private router: Router, private user: UsersService, private ls: LocalStorageService, private renderer: Renderer2, 
+  constructor(private router: Router, private user: UsersService, private ls: LocalStorageService, private renderer: Renderer2,
     private el: ElementRef, private cdr: ChangeDetectorRef) {
   }
 
@@ -58,4 +58,12 @@ export class NavbarComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
+  onclick() {
+    setTimeout(() => {
+      document.querySelector('#shopping-cart')?.classList.toggle('hidden');
+    }, 500);
+    document.querySelector('#shopping-cart-list')?.classList.remove('transform', 'transition', 'ease-in-out', 'duration-500',
+      'sm:duration-700', 'translate-x-full');
+    document.querySelector('#shopping-cart-bg')?.classList.remove('ease-in-out', 'duration-500', 'opacity-0');
+  }
 }

@@ -16,10 +16,11 @@
             </a>
         </button>
 
-        <button mat-icon-button>
-            <a [routerLink]="['/shopping-cart']" class="flex justify-center items-center">
+        <button mat-icon-button (click)="onclick()">
+            <mat-icon class="text-4xl">shopping_cart</mat-icon>
+            <!-- <a [routerLink]="['/shopping-cart']" class="flex justify-center items-center">
                 <mat-icon class="text-4xl">shopping_cart</mat-icon>
-            </a>
+            </a> -->
         </button>
 
         <button *ngIf="token; else elseBlock" mat-icon-button [matMenuTriggerFor]="menu">
@@ -41,3 +42,6 @@
         </ng-template>
     </div>
 </nav>
+
+<app-shopping-cart id="shopping-cart" class="hidden"></app-shopping-cart>
+```

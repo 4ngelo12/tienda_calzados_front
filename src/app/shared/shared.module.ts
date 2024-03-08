@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar';
 import { LoginLayoutComponent, RegisterLayoutComponent } from './users';
 import { NotfoundComponent } from './notfound';
 import { FooterComponent } from './footer/footer.component';
+import { ShoppingCartComponent } from './shopping-cart';
 
 
 
@@ -17,6 +18,7 @@ import { FooterComponent } from './footer/footer.component';
     NavbarComponent,
     NotfoundComponent,
     FooterComponent,
+    ShoppingCartComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +33,7 @@ import { FooterComponent } from './footer/footer.component';
     RegisterLayoutComponent,
     NotfoundComponent,
     FooterComponent,
-  ]
+    ShoppingCartComponent,
+  ],
 })
 export class SharedModule { }
