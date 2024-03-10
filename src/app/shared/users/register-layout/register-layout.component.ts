@@ -40,7 +40,6 @@ export class RegisterLayoutComponent implements OnInit {
       
       this.user.register(this.RegisterData).subscribe({
         next: (res: any) => {
-          console.log(res);
           this.snack.open('User registrado', 'Aceptar', {
             duration: 5000
           });
@@ -48,7 +47,6 @@ export class RegisterLayoutComponent implements OnInit {
           this.parentRegisterForm.reset();
         },
         error: (err) => {
-          console.log(err);
           this.snack.open('Error al registrar User', 'Aceptar', {
             duration: 5000
           });

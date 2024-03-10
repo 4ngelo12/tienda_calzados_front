@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ShoppingCart, ShoppingCartByUserId } from 'src/app/core/interfaces';
+import { Component, Input, OnInit } from '@angular/core';
+import { ShoppingCartByUserId } from 'src/app/core/interfaces';
 import { LocalStorageService, ShoppingCartService } from 'src/app/core/services';
 
 @Component({
@@ -9,22 +9,30 @@ import { LocalStorageService, ShoppingCartService } from 'src/app/core/services'
 })
 export class ShoppingCartComponent implements OnInit {
 
+  @Input()
+  token!: string;
+
   data: ShoppingCartByUserId[] = [];
   userId!: number;
 
   constructor(private cartService: ShoppingCartService, private lsService: LocalStorageService) { }
 
   ngOnInit(): void {
-    this.userId = this.lsService.getUser().id;
-
-    this.cartService.getShoppingCartById(this.userId).subscribe({
-      next: (res: any) => {
-        this.data = res;
-      }
-    })
   }
 
-  onclick() {
+  getShoppingCartValues() {
+    if (this.token) {
+      this.userId = this.lsService.getUser().id;
+
+      this.cartService.getShoppingCartByUserId(this.userId).subscribe({
+        next: (res: any) => {
+          this.data = res;
+        }
+      });
+    }
+  }
+
+  closeComponent() {
     document.querySelector('#shopping-cart-list')?.classList.add('transform', 'transition', 'ease-in-out', 'duration-500',
       'sm:duration-700', 'translate-x-full');
     document.querySelector('#shopping-cart-bg')?.classList.add('ease-in-out', 'duration-500', 'opacity-0');
@@ -33,4 +41,15 @@ export class ShoppingCartComponent implements OnInit {
     }, 500);
   }
 
+  RemoveFromShoppingCart(id: number) {
+    this.cartService.deleteShoppingCart(id).subscribe({
+      next: () => {
+        this.data = this.data.filter((item) => item.id !== id);
+      }
+    });
+  }
+
+  getTotaPrice() {
+    return this.data.reduce((acc, item) => acc + item.subTotal, 0);
+  }
 }

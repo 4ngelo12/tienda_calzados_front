@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Products, ShoppingCart, ShoppingCartResponse, UserId } from 'src/app/core/interfaces';
 import { ProductsService, ShoppingCartService } from 'src/app/core/services';
@@ -19,8 +20,8 @@ export class ProductComponent implements OnInit {
   shoppingCart: ShoppingCart = {} as ShoppingCart;
   shoppihnCartResponse: ShoppingCartResponse = {} as ShoppingCartResponse;
 
-  constructor(private prodService: ProductsService, private cartService: ShoppingCartService, 
-    private activateRoute: ActivatedRoute) { }
+  constructor(private prodService: ProductsService, private cartService: ShoppingCartService,
+    private activateRoute: ActivatedRoute, private snack: MatSnackBar) { }
 
   async ngOnInit() {
     this.id = this.activateRoute.snapshot.paramMap.get('id')!;
@@ -53,8 +54,13 @@ export class ProductComponent implements OnInit {
     this.shoppingCart.productId = Number(this.id);
     this.cartService.postShoppingCart(this.shoppingCart).subscribe({
       next: (res: any) => {
+        this.snack.open('Producto Agregado', 'Cerrar', {
+          horizontalPosition: 'end',
+          duration: 5000,
+          panelClass: ['bg-green-600', 'text-white', 'custom-close-button-text', 'dark:bg-green-800'],
+
+        });
         this.shoppihnCartResponse = res;
-        console.log(this.shoppihnCartResponse);
       }
     });
   }

@@ -16,11 +16,8 @@
             </a>
         </button>
 
-        <button mat-icon-button (click)="onclick()">
+        <button mat-icon-button (click)="showShoppingCart()">
             <mat-icon class="text-4xl">shopping_cart</mat-icon>
-            <!-- <a [routerLink]="['/shopping-cart']" class="flex justify-center items-center">
-                <mat-icon class="text-4xl">shopping_cart</mat-icon>
-            </a> -->
         </button>
 
         <button *ngIf="token; else elseBlock" mat-icon-button [matMenuTriggerFor]="menu">
@@ -43,5 +40,4 @@
     </div>
 </nav>
 
-<app-shopping-cart id="shopping-cart" class="hidden"></app-shopping-cart>
-```
+<app-shopping-cart id="shopping-cart" class="hidden" [token]="token"></app-shopping-cart>

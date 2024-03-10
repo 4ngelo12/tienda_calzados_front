@@ -39,3 +39,9 @@ body {
 .btn-text {
   font-size: 1rem;
 }
+
+
+/* En tu archivo de estilos CSS (por ejemplo, styles.css) */
+.custom-close-button-text .mat-button-wrapper {
+  color: white; /* Cambia el color del texto a tu preferencia */
+}

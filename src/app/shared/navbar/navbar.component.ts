@@ -1,6 +1,7 @@
-import { ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { LocalStorageService, UsersService } from 'src/app/core/services';
+import { ShoppingCartComponent } from '../shopping-cart';
 
 @Component({
   selector: 'app-navbar',
@@ -11,6 +12,7 @@ export class NavbarComponent implements OnInit {
 
   token: any;
   navbar!: ElementRef;
+  @ViewChild(ShoppingCartComponent) shoppingCart!: ShoppingCartComponent;
 
   constructor(private router: Router, private user: UsersService, private ls: LocalStorageService, private renderer: Renderer2,
     private el: ElementRef, private cdr: ChangeDetectorRef) {
@@ -58,12 +60,13 @@ export class NavbarComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
-  onclick() {
+  showShoppingCart() {
     setTimeout(() => {
       document.querySelector('#shopping-cart')?.classList.toggle('hidden');
     }, 500);
     document.querySelector('#shopping-cart-list')?.classList.remove('transform', 'transition', 'ease-in-out', 'duration-500',
       'sm:duration-700', 'translate-x-full');
     document.querySelector('#shopping-cart-bg')?.classList.remove('ease-in-out', 'duration-500', 'opacity-0');
+    this.shoppingCart.getShoppingCartValues();
   }
 }

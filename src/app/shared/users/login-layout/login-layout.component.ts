@@ -30,20 +30,18 @@ export class LoginLayoutComponent implements OnInit {
           this.lsService.setToken(res.jwTtoken);
         },
         complete: () => {
-          this.snack.open('Bienvenido', 'Cerrar', {
-            duration: 2000
-          });
           this.parentLoginForm.reset();
-          this.router.navigate(['/home'])
           this.user.getCurrentUser().subscribe(
             (user: any) => {
               this.lsService.setUser(user);
-              this.router.navigate(['/home']);
+              this.router.navigate(['/home']).then(() => {
+                window.location.reload();
+              });
+
             }
           )
         },
         error: (err) => {
-          console.log(err);
           this.snack.open('Error al iniciar sesión', 'Cerrar', {
             duration: 2000
           });
