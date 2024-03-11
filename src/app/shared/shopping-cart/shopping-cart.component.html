@@ -39,12 +39,15 @@
                                                     <div
                                                         class="flex justify-between text-base font-medium text-gray-900">
                                                         <h3>
-                                                            <!--TODO Cambiar ruta al producto-->
-                                                            <a href="#">{{item.products.name}}</a>
+                                                            <a class="cursor-pointer"
+                                                                (click)="showProduct(item.products.id)">
+                                                                {{item.products.name}}
+                                                            </a>
                                                         </h3>
                                                         <p class="ml-4">S/{{item.subTotal}}</p>
                                                     </div>
-                                                    <p class="mt-1 text-sm text-gray-500">Talla {{item.products.size}}</p>
+                                                    <p class="mt-1 text-sm text-gray-500">Talla {{item.products.size}}
+                                                    </p>
                                                 </div>
                                                 <div class="flex flex-1 items-end justify-between text-sm">
                                                     <p class="text-gray-500">Cantidad {{item.amount}}</p>

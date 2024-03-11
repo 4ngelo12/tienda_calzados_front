@@ -43,5 +43,5 @@ body {
 
 /* En tu archivo de estilos CSS (por ejemplo, styles.css) */
 .custom-close-button-text .mat-button-wrapper {
-  color: white; /* Cambia el color del texto a tu preferencia */
+  color: white; 
 }

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ShoppingCartByUserId } from 'src/app/core/interfaces';
 import { LocalStorageService, ShoppingCartService } from 'src/app/core/services';
 
@@ -15,7 +16,7 @@ export class ShoppingCartComponent implements OnInit {
   data: ShoppingCartByUserId[] = [];
   userId!: number;
 
-  constructor(private cartService: ShoppingCartService, private lsService: LocalStorageService) { }
+  constructor(private cartService: ShoppingCartService, private lsService: LocalStorageService, private route: Router) { }
 
   ngOnInit(): void {
   }
@@ -51,5 +52,9 @@ export class ShoppingCartComponent implements OnInit {
 
   getTotaPrice() {
     return this.data.reduce((acc, item) => acc + item.subTotal, 0);
+  }
+
+  showProduct(id: number) {
+    this.route.navigate(['/products', id]);
   }
 }
