@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/users/login/login.component';
 import { RegisterComponent } from './pages/users/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
-import { WithoutSaveGuard } from './core/guards';
+import { UserGuard, WithoutSaveGuard } from './core/guards';
 import { NotfoundComponent } from './shared/notfound';
 
 const routes = [
@@ -19,12 +19,16 @@ const routes = [
     path: 'register', canDeactivate: [WithoutSaveGuard], component: RegisterComponent, pathMatch: 'full'
   },
   {
-    path: 'products',
+    path: 'products', canActivate: [UserGuard],
     loadChildren: () => import('./pages').then(m => m.ProductsModule)
   },
   {
     path: 'auth',
     loadChildren: () => import('./pages/users/users.module').then(m => m.UsersModule)
+  },
+  {
+    path: 'checkout', canActivate: [UserGuard],
+    loadChildren: () => import('./pages').then(m => m.CheckoutModule)
   },
   {
     path: '**', component: NotfoundComponent

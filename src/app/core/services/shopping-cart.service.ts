@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ShoppingCart, ShoppingCartResponse } from '../interfaces';
-import { BehaviorSubject } from 'rxjs';
+import { ShoppingCart } from '../interfaces';
 import baseUrl from './helper';
 
 @Injectable({
@@ -24,5 +23,9 @@ export class ShoppingCartService {
 
   public getShoppingCart() {
     return this.http.get(`${baseUrl}/shoppingcart`);
+  }
+
+  public deleteShoppingCartByUserId(id: number) {
+    return this.http.delete(`${baseUrl}/shoppingcart/user/${id}`);
   }
 }

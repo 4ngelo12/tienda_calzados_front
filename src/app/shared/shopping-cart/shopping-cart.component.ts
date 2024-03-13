@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { ShoppingCartByUserId } from 'src/app/core/interfaces';
 import { LocalStorageService, ShoppingCartService } from 'src/app/core/services';
 
@@ -56,5 +56,15 @@ export class ShoppingCartComponent implements OnInit {
 
   showProduct(id: number) {
     this.route.navigate(['/products', id]);
+  }
+
+  showCheckout(totalValue: number) {
+    this.closeComponent();
+    let navigationExtras: NavigationExtras = {
+      state: {
+        totalValue: totalValue
+      }
+    };
+    this.route.navigate(['/checkout'], navigationExtras);
   }
 }

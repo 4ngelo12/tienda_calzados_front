@@ -1,0 +1,151 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDatepicker, MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { Router } from '@angular/router';
+import { Sale, ShoppingCartByUserId } from 'src/app/core/interfaces';
+import { LocalStorageService, SaleService, ShoppingCartService } from 'src/app/core/services';
+
+@Component({
+  selector: 'app-cards',
+  templateUrl: './cards.component.html',
+  styleUrls: ['./cards.component.css'],
+})
+export class CardsComponent implements OnInit {
+
+  data: ShoppingCartByUserId[] = [];
+  checkoutForm!: FormGroup;
+  saleData: Sale = {} as Sale;
+  totalValue!: number;
+  token: string = "";
+  userId!: number;
+
+  constructor(private saleService: SaleService, private cartService: ShoppingCartService, private lsService: LocalStorageService,
+    private fb: FormBuilder, public route: Router) {
+  }
+
+  ngOnInit(): void {
+    this.checkoutForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(45)]],
+      email: ['', [Validators.required, Validators.email]],
+      cardNumber: ['', [Validators.required, Validators.minLength(19), Validators.maxLength(19),
+      Validators.pattern(/^\d{4}\s\d{4}\s\d{4}\s\d{4}$/)]],
+      expiration: ['', [Validators.required]],
+      ccv: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
+    });
+
+    this.token = this.lsService.getToken() ?? '';
+    this.getShoppingCartValues();
+  }
+
+  getShoppingCartValues() {
+    if (this.token) {
+      this.userId = this.lsService.getUser().id;
+
+      this.cartService.getShoppingCartByUserId(this.userId).subscribe({
+        next: (res: any) => {
+          this.data = res;
+        }
+      });
+    }
+  }
+
+  getTotaPrice() {
+    return this.data.reduce((acc, item) => acc + item.subTotal, 0);
+  }
+
+  submitSale() {
+    if (this.checkoutForm.valid) {
+      this.totalValue = this.getTotaPrice();
+      this.saleData.userId = this.lsService.getUser().id;
+      this.saleData.total = this.totalValue;
+      const currentDate = new Date();
+      this.saleData.purchase_date = new Date(
+        currentDate.getTime() - (currentDate.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+
+      console.log(this.saleData);
+      this.saleService.postSale(this.saleData).subscribe({
+        next: (res: any) => {
+          this.cartService.deleteShoppingCartByUserId(res.userId).subscribe({
+            next: () => {
+              this.route.navigate(['/']);
+            }
+          });
+        },
+      })
+    }
+  }
+
+  // Inputs configuration
+  truncateValue(event: any) {
+    const inputValue = event.target.value;
+    if (inputValue.length > 3) {
+      event.target.value = inputValue.slice(0, 3);
+    }
+  }
+
+  formatCardNumber(event: any) {
+    const inputValue = event.target.value;
+    event.target.value = inputValue.replace(/\s/g, '').replace(/(\d{4})/g, '$1 ').trim();
+  }
+
+  setMonthAndYear(event: MatDatepickerInputEvent<Date>, datepicker: MatDatepicker<Date>) {
+    const selectedDate = event.value;
+    const ctrlValue = this.checkoutForm.get('expiration')?.value || new Date();
+    ctrlValue.setMonth(selectedDate?.getMonth());
+    ctrlValue.setFullYear(selectedDate?.getFullYear());
+    this.checkoutForm.get('expiration')?.setValue(ctrlValue);
+    datepicker.close();
+  }
+
+  // Form Validation
+  getNameErrorMessage() {
+    if (this.checkoutForm.get('name')!.hasError('required')) {
+      return 'Debes ingresar un valor';
+    }
+    if (this.checkoutForm.get('name')!.hasError('maxlength')) {
+      return 'El valor ingresado es demasiado largo';
+    }
+
+    return this.checkoutForm.get('name')!.hasError('minlength') ?
+      'El valor ingresado no es lo suficientemente largo' : '';
+  }
+
+  getEmailErrorMessage() {
+    if (this.checkoutForm.get('email')!.hasError('required')) {
+      return 'Debes ingresar un valor';
+    }
+
+    return this.checkoutForm.get('email')!.hasError('email') ? 'Formato de correo invalido' : '';
+  }
+
+  getCardNumberErrorMessage() {
+    if (this.checkoutForm.get('cardNumber')!.hasError('required')) {
+      return 'Debes ingresar un valor';
+    }
+    if (this.checkoutForm.get('cardNumber')!.hasError('maxlength')) {
+      return 'El valor ingresado es demasiado largo';
+    }
+    if (this.checkoutForm.get('cardNumber')!.hasError('pattern')) {
+      return 'El valor ingresado no es válido';
+    }
+
+    return this.checkoutForm.get('cardNumber')!.hasError('minlength') ?
+      'El valor ingresado no es lo suficientemente largo' : '';
+  }
+
+  getExpirationErrorMessage() {
+    return this.checkoutForm.get('expiration')!.hasError('required') ? 'Debes ingresar un valor' : '';
+  }
+
+  getCCVErrorMessage() {
+    if (this.checkoutForm.get('ccv')!.hasError('required')) {
+      return 'Debes ingresar un valor';
+    }
+    if (this.checkoutForm.get('ccv')!.hasError('maxlength')) {
+      return 'El valor ingresado es demasiado largo';
+    }
+
+    return this.checkoutForm.get('ccv')!.hasError('minlength') ?
+      'El valor ingresado no es lo suficientemente largo' : '';
+  }
+}

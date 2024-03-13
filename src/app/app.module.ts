@@ -8,7 +8,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { SharedModule } from './shared';
 import { MaterialModule } from './modules/material';
-import { HomeModule, ProductsModule, UsersModule } from './pages';
+import { HomeModule, ProductsModule, UsersModule, CheckoutModule } from './pages';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { HomeModule, ProductsModule, UsersModule } from './pages';
     UsersModule,
     SharedModule,
     HomeModule,
-    ProductsModule
+    ProductsModule,
+    CheckoutModule,
   ],
   providers: [
     {

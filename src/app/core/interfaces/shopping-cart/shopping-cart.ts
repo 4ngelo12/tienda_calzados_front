@@ -7,11 +7,9 @@ export interface ShoppingCart {
 }
 
 export interface ShoppingCartResponse {
-    code: string;
-    amount: number;
-    subTotal: number;
-    userId: number;
-    productId: number;
+    totalElements: number;
+    content: ShoppingCartByUserId[];
+
 }
 
 export interface ShoppingCartByUserId {
