@@ -18,7 +18,7 @@ export class FooterComponent implements OnInit {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const rutaActual = this.router.url;
-        (rutaActual !== '/login' && rutaActual !== '/register') ? this.showFooter() : this.hiddenFooter();
+        (rutaActual.includes("/auth")) ? this.hiddenFooter() : this.showFooter();
       }
     });
   }

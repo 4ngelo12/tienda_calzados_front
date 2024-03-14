@@ -4,16 +4,11 @@ import { HomeComponent } from './pages/home/home.component';
 import { UserGuard, WithoutSaveGuard } from './core/guards';
 import { NotfoundComponent } from './shared/notfound';
 import { RouterModule } from '@angular/router';
-import { LoginComponent } from './pages';
 
 const routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'home', component: HomeComponent, pathMatch: 'full'
-  },
-  {
-    path: 'products', canActivate: [UserGuard],
-    loadChildren: () => import('./pages').then(m => m.ProductsModule)
   },
   {
     path: 'auth',
@@ -22,6 +17,14 @@ const routes = [
   {
     path: 'checkout', canActivate: [UserGuard],
     loadChildren: () => import('./pages').then(m => m.CheckoutModule)
+  },
+  {
+    path: 'products', canActivate: [UserGuard],
+    loadChildren: () => import('./pages').then(m => m.ProductsModule)
+  },
+  {
+    path: 'users', canActivate: [UserGuard],
+    loadChildren: () => import('./pages').then(m => m.UsersModule)
   },
   {
     path: '**', component: NotfoundComponent

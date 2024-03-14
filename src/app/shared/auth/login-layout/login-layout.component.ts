@@ -45,8 +45,8 @@ export class LoginLayoutComponent implements OnInit {
             }
           )
         },
-        error: (err) => {
-          this.snack.open('Error al iniciar sesión', 'Cerrar', {
+        error: (err: any) => {
+          this.snack.open(err.error.message, 'Cerrar', {
             duration: 2000
           });
         }

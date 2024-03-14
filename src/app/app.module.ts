@@ -9,6 +9,7 @@ import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { SharedModule } from './shared';
 import { MaterialModule } from './modules/material';
 import { HomeModule, ProductsModule, CheckoutModule, UsersModule, AuthModule } from './pages';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HomeModule, ProductsModule, CheckoutModule, UsersModule, AuthModule } f
     HomeModule,
     ProductsModule,
     CheckoutModule,
+    SweetAlert2Module.forRoot(),
     AuthModule
   ],
   providers: [

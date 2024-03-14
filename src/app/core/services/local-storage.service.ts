@@ -28,6 +28,16 @@ export class LocalStorageService {
     return JSON.parse(localStorage.getItem('user')!);
   }
 
+  // Eliminar token de inicio de sesion
+  public deleteToken() {
+    localStorage.removeItem('token');
+  }
+
+  // Eliminar datos de la sesion
+  public deleteUser() {
+    localStorage.removeItem('user');
+  }
+
   // Validar la vigencia del token
   public validateToken(): boolean {
     const token = localStorage.getItem('token');

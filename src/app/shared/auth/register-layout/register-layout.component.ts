@@ -56,7 +56,7 @@ export class RegisterLayoutComponent implements OnInit {
           });
         },
         complete: () => {
-          this.router.navigate(['/login']);
+          this.router.navigate(['/auth/login']);
         }
       })
     }

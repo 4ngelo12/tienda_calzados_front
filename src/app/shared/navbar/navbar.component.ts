@@ -30,6 +30,8 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  // Redirecciones
+
   showHome() {
     this.router.navigate(['/home']);
   }
@@ -38,10 +40,16 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/auth/login']);
   }
 
+  showPerfil() {
+    this.router.navigate(['/users/perfil']);
+  }
+
   logout() {
     this.user.logout();
     this.rechargeComponent();
   }
+
+  // Funciones de la barra de navegación
 
   hiddenNavbar() {
     if (this.navbar) {
@@ -57,6 +65,16 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  showShoppingCart() {
+    setTimeout(() => {
+      document.querySelector('#shopping-cart')?.classList.toggle('hidden');
+    }, 500);
+    document.querySelector('#shopping-cart-list')?.classList.remove('transform', 'transition', 'ease-in-out', 'duration-500',
+      'sm:duration-700', 'translate-x-full');
+    document.querySelector('#shopping-cart-bg')?.classList.remove('ease-in-out', 'duration-500', 'opacity-0');
+    this.shoppingCart.getShoppingCartValues();
+  }
+
   tokenAvailable() {
     this.token = this.ls.getToken();
   }
@@ -66,15 +84,5 @@ export class NavbarComponent implements OnInit {
     this.tokenAvailable();
 
     this.cdr.detectChanges();
-  }
-
-  showShoppingCart() {
-    setTimeout(() => {
-      document.querySelector('#shopping-cart')?.classList.toggle('hidden');
-    }, 500);
-    document.querySelector('#shopping-cart-list')?.classList.remove('transform', 'transition', 'ease-in-out', 'duration-500',
-      'sm:duration-700', 'translate-x-full');
-    document.querySelector('#shopping-cart-bg')?.classList.remove('ease-in-out', 'duration-500', 'opacity-0');
-    this.shoppingCart.getShoppingCartValues();
   }
 }

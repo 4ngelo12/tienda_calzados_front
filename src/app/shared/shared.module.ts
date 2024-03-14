@@ -6,7 +6,7 @@ import { NavbarComponent } from './navbar';
 import { NotfoundComponent } from './notfound';
 import { FooterComponent } from './footer/footer.component';
 import { ShoppingCartComponent } from './shopping-cart';
-import { LoginLayoutComponent, RegisterLayoutComponent } from './users';
+import { LoginLayoutComponent, RegisterLayoutComponent } from './auth';
 
 
 

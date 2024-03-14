@@ -33,6 +33,7 @@ body {
 }
 
 .login-url:hover {
+  cursor: pointer;
   color: rgb(8 145 178)
 }
 

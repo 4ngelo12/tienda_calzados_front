@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import baseUrl from './helper';
-import { Login, User } from '../interfaces';
+import { Login, User, UpdateUser } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +26,15 @@ export class UsersService {
   // Obtener datos del User
   public getCurrentUser() {
     return this.http.get(`${baseUrl}/user`);
+  }
+
+  // Actualizar datos del User
+  public updateUser(user: UpdateUser) {
+    return this.http.patch(`${baseUrl}/user/${user.id}`, user);
+  }
+
+  // Eliminar User
+  public deleteUser(id: number) {
+    return this.http.delete(`${baseUrl}/user/${id}`);
   }
 }

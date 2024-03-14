@@ -14,7 +14,7 @@ export class UserGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     console.log(this.lsService.validateToken());
     if (!this.lsService.validateToken()) {
-      this.router.createUrlTree(['/auth/login'])
+      this.router.navigate(['/auth/login'])
     }
 
     return true;
