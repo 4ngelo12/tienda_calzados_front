@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppRouterModule } from 'src/app/app-router.module';
 import { HomeComponent } from './home.component';
 import { SharedModule } from 'src/app/shared';
 import { LocalStorageService, ProductsService } from 'src/app/core/services';
@@ -14,7 +13,6 @@ import { PipesModule } from 'src/app/core/pipes';
   ],
   imports: [
     CommonModule,
-    AppRouterModule,
     MaterialModule,
     SharedModule,
     PipesModule

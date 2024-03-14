@@ -25,9 +25,17 @@ export class NavbarComponent implements OnInit {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const rutaActual = this.router.url;
-        (rutaActual !== '/login' && rutaActual !== '/register') ? this.showNavbar() : this.hiddenNavbar();
+        (rutaActual.includes("/auth")) ? this.hiddenNavbar() : this.showNavbar();
       }
     });
+  }
+
+  showHome() {
+    this.router.navigate(['/home']);
+  }
+
+  showLogin() {
+    this.router.navigate(['/auth/login']);
   }
 
   logout() {

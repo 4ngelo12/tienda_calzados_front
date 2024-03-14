@@ -51,7 +51,7 @@
             <div class="mt-7 mb-6">
               <button mat-raised-button
                 class="w-full bg-buttons btn-text hover:bg-buttons-hover">Ingresar</button>
-              <p class="mt-2 lg:text-sm">¿Eres nuevo aquí?, <a [routerLink]="['/register']" class="login-url">Crea
+              <p class="mt-2 lg:text-sm">¿Eres nuevo aquí?, <a (click)="showRegister()" class="login-url">Crea
                   una cuenta ahora</a></p>
             </div>
           </div>

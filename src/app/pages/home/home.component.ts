@@ -1,7 +1,6 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Products } from 'src/app/core/interfaces';
-import { ProductsFilterPipe } from 'src/app/core/pipes';
 import { LocalStorageService, ProductsService } from 'src/app/core/services';
 
 @Component({
@@ -15,8 +14,7 @@ export class HomeComponent implements OnInit {
   ProductData: Products[] = [];
   search: string = '';
 
-  constructor(private prodService: ProductsService, private lsService: LocalStorageService, private route: Router,
-    private cdr: ChangeDetectorRef) { }
+  constructor(private prodService: ProductsService, private lsService: LocalStorageService, private route: Router) { }
 
 
   async ngOnInit() {

@@ -79,7 +79,7 @@
             <div class="mt-7 mb-6 flex flex-col items-center">
               <button mat-raised-button
                 class="w-full lg:w-1/2 bg-buttons btn-text hover:bg-buttons-hover">Registrar</button>
-              <p class="mt-2 lg:text-sm">¿Ya tienes una cuenta?, <a [routerLink]="['/login']" class="login-url">Inicia Sesión</a></p>
+              <p class="mt-2 lg:text-sm">¿Ya tienes una cuenta?, <a (click)="showLogin()" class="login-url">Inicia Sesión</a></p>
             </div>
           </div>
         </form>

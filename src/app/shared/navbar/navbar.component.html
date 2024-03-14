@@ -11,7 +11,7 @@
 
     <div class="flex md:flex-row gap-8">
         <button mat-icon-button>
-            <a [routerLink]="['/home']" class="flex justify-center items-center">
+            <a (click)="showHome()" class="flex justify-center items-center">
                 <mat-icon class="text-4xl">home</mat-icon>
             </a>
         </button>
@@ -32,7 +32,7 @@
 
         <ng-template #elseBlock>
             <button mat-icon-button>
-                <a [routerLink]="['/login']" #elseBlock class="flex justify-center items-center">
+                <a (click)="showLogin()" #elseBlock class="flex justify-center items-center">
                     <mat-icon class="text-4xl">login</mat-icon>
                 </a>
             </button>

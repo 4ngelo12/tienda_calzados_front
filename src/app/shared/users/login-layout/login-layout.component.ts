@@ -21,6 +21,10 @@ export class LoginLayoutComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  showRegister() {
+    this.router.navigate(['/auth/register']);	
+  }
+
 
   loginSubmit() {
     if (this.parentLoginForm.valid) {

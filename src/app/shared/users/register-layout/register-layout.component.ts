@@ -20,6 +20,10 @@ export class RegisterLayoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  showLogin() {
+    this.router.navigate(['auth/login']);
+  }
+
   registerSubmit() {
     if (this.parentRegisterForm.valid) {
       this.RegisterData = this.parentRegisterForm.value;
