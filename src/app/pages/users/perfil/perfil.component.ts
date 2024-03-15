@@ -13,8 +13,10 @@ import { LocalStorageService, UsersService } from 'src/app/core/services';
 export class PerfilComponent implements OnInit {
 
   updateForm !: FormGroup;
-  userUpdData: UpdateUser = {} as UpdateUser;
   userId!: number;
+
+  // User data
+  userUpdData: UpdateUser = {} as UpdateUser;
   userData: UserLs = {} as UserLs;
 
   constructor(private userService: UsersService, private lsService: LocalStorageService, private router: Router,
@@ -25,7 +27,7 @@ export class PerfilComponent implements OnInit {
 
     this.updateForm = this.fb.group({
       name: [this.userData.name, [Validators.minLength(3), Validators.maxLength(45)]],
-      lastname: [this.userData.lastname, [Validators.minLength(3), Validators.maxLength(45)]],
+      lastname: [this.userData.lastName, [Validators.minLength(3), Validators.maxLength(45)]],
       email: [this.userData.email, [Validators.email]],
       birthdate: [this.userData.birthdate, []],
     });
@@ -33,8 +35,6 @@ export class PerfilComponent implements OnInit {
 
   deleteUser() {
     this.userId = this.lsService.getUser().id;
-    console.log(this.userId);
-    console.log("Eliminando usuario...");
     this.userService.deleteUser(this.userId).subscribe({
       next: () => {
         this.lsService.deleteToken();

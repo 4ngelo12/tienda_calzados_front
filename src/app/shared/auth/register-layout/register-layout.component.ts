@@ -14,14 +14,20 @@ export class RegisterLayoutComponent implements OnInit {
   @Input()
   parentRegisterForm!: FormGroup;
   RegisterData: User = {} as User;
+  hidePass = true;
+  hidePassConfirm = true;
 
   constructor(private user: UsersService, private router: Router, private snack: MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
-  showLogin() {
-    this.router.navigate(['auth/login']);
+  togglePasswordVisibility() {
+    this.hidePass = !this.hidePass;
+  }
+
+  togglePasswordVisibilityConfirm() {
+    this.hidePassConfirm = !this.hidePassConfirm;
   }
 
   registerSubmit() {
@@ -41,7 +47,7 @@ export class RegisterLayoutComponent implements OnInit {
         });
         return;
       }
-      
+
       this.user.register(this.RegisterData).subscribe({
         next: (res: any) => {
           this.snack.open('User registrado', 'Aceptar', {
@@ -62,6 +68,12 @@ export class RegisterLayoutComponent implements OnInit {
     }
   }
 
+  // Redirecciones
+  showLogin() {
+    this.router.navigate(['auth/login']);
+  }
+
+  // Validaciones de formulario
 
   getErrorMessageName() {
     if (this.parentRegisterForm.get('name')!.hasError('required')) {

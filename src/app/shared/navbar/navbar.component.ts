@@ -47,6 +47,7 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.user.logout();
     this.rechargeComponent();
+    this.router.navigate(['/home']);
   }
 
   // Funciones de la barra de navegación

@@ -15,16 +15,16 @@ export class LoginLayoutComponent implements OnInit {
   @Input()
   parentLoginForm!: FormGroup;
   loginData: Login = {} as Login;
+  hide = true;
 
   constructor(private user: UsersService, private lsService: LocalStorageService,
     private router: Router, private snack: MatSnackBar) { }
 
   ngOnInit(): void { }
 
-  showRegister() {
-    this.router.navigate(['/auth/register']);	
+  togglePasswordVisibility() {
+    this.hide = !this.hide;
   }
-
 
   loginSubmit() {
     if (this.parentLoginForm.valid) {
@@ -39,7 +39,7 @@ export class LoginLayoutComponent implements OnInit {
             (user: any) => {
               this.lsService.setUser(user);
               this.router.navigate(['/home']).then(() => {
-                window.location.reload();
+                // window.location.reload();
               });
 
             }
@@ -54,6 +54,14 @@ export class LoginLayoutComponent implements OnInit {
       );
     }
   }
+
+
+  // Redirecciones
+  showRegister() {
+    this.router.navigate(['/auth/register']);	
+  }
+
+  // Validaciones de formulario
 
   getErrorMessageEmail() {
     if (this.parentLoginForm.get('username')!.hasError('required')) {

@@ -9,7 +9,7 @@ export interface User {
 
 export interface UserLs {
     name: string;
-    lastname: string;
+    lastName: string;
     email: string;
     birthdate: Date;
 }
