@@ -44,6 +44,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/users/perfil']);
   }
 
+  showSalesDetails() {
+    this.router.navigate(['/sales']);
+  }
+
   logout() {
     this.user.logout();
     this.rechargeComponent();

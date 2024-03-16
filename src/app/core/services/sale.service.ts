@@ -13,4 +13,12 @@ export class SaleService {
   public postSale(data: Sale) {
     return this.http.post(`${baseUrl}/sale`, data);
   }
+
+  public getSalesByUserId(id: number) {
+    return this.http.get(`${baseUrl}/sale/${id}?size=6`);
+  }
+
+  public getSaleDetails(saleId: number) {
+    return this.http.get(`${baseUrl}/sale/details/${saleId}`);
+  }
 }

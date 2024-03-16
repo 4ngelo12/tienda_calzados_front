@@ -9,7 +9,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [],
@@ -26,6 +27,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatNativeDateModule,
     MatToolbarModule,
     MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
 })
 export class MaterialModule { }

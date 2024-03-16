@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './pages/home/home.component';
-import { UserGuard, WithoutSaveGuard } from './core/guards';
+import { UserGuard } from './core/guards';
 import { NotfoundComponent } from './shared/notfound';
 import { RouterModule } from '@angular/router';
 
@@ -21,6 +21,10 @@ const routes = [
   {
     path: 'products', canActivate: [UserGuard],
     loadChildren: () => import('./pages').then(m => m.ProductsModule)
+  },
+  {
+    path: 'sales', canActivate: [UserGuard],
+    loadChildren: () => import('./pages').then(m => m.SalesModule)
   },
   {
     path: 'users', canActivate: [UserGuard],

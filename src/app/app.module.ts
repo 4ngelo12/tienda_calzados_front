@@ -7,9 +7,9 @@ import { AppRouterModule } from './app-router.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { SharedModule } from './shared';
-import { MaterialModule } from './modules/material';
-import { HomeModule, ProductsModule, CheckoutModule, UsersModule, AuthModule } from './pages';
+import { HomeModule, ProductsModule, CheckoutModule, UsersModule, AuthModule, SalesModule } from './pages';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { MaterialModule } from './modules';
 
 @NgModule({
   declarations: [
@@ -26,8 +26,9 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     HomeModule,
     ProductsModule,
     CheckoutModule,
+    SalesModule,
+    AuthModule,
     SweetAlert2Module.forRoot(),
-    AuthModule
   ],
   providers: [
     {
