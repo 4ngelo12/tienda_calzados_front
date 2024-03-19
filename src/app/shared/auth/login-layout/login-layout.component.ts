@@ -61,6 +61,10 @@ export class LoginLayoutComponent implements OnInit {
     this.router.navigate(['/auth/register']);	
   }
 
+  showRecoveryPassword() {
+    this.router.navigate(['/auth/recovery-password']);	
+  }
+
   // Validaciones de formulario
 
   getErrorMessageEmail() {

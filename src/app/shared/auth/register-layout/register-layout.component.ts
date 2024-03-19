@@ -126,5 +126,4 @@ export class RegisterLayoutComponent implements OnInit {
 
     return this.parentRegisterForm.get('passwordConfirm')!.hasError('minlength') ? 'Longitud de contraseña insuficiente' : '';
   }
-
 }

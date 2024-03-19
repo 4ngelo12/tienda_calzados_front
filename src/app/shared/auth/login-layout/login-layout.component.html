@@ -30,7 +30,6 @@
 
       <div>
         <form [formGroup]="parentLoginForm" (ngSubmit)="loginSubmit()">
-          <!-- (ngSubmit)="loginSubmit()" -->
           <div class="flex flex-col mx-6 lg:mx-14">
             <mat-form-field class="mb-4 dark:text-white">
               <mat-label class="dark:text-white">Correo</mat-label>
@@ -48,7 +47,7 @@
                 <mat-icon matSuffix><button type="button"
                     (click)="togglePasswordVisibility()">password</button></mat-icon>
               </mat-form-field>
-              <a href="#" class="lg:text-sm login-url">¿Has olvidado tu constraseña?</a>
+              <a (click)="showRecoveryPassword()" class="lg:text-sm login-url">¿Has olvidado tu constraseña?</a>
             </div>
 
             <div class="mt-7 mb-6">

@@ -62,7 +62,6 @@ export class CardsComponent implements OnInit {
       this.saleData.purchase_date = new Date(
         currentDate.getTime() - (currentDate.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
 
-      console.log(this.saleData);
       this.saleService.postSale(this.saleData).subscribe({
         next: (res: any) => {
           this.cartService.deleteShoppingCartByUserId(res.userId).subscribe({
