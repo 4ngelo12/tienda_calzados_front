@@ -1,4 +1,4 @@
-<div class="flex flex-col md:flex-row mt-6 md:mt-10 gap-10 mb-12">
+<div class="flex flex-col lg:flex-row items-center mt-6 md:mt-10 gap-10 mb-12 text-2xl lg:text-base">
     <div class="w-full max-w-xl p-4 overflow-hidden rounded-lg bg-general dark:bg-general-dark">
         <img loading="lazy" src="https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg"
             alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
@@ -7,11 +7,13 @@
 
     <div class="flex flex-col mt-5 justify-center">
         <div>
-            <h2 class="text-3xl font-medium">
+            <h2 class="text-4xl lg:text-2xl font-medium">
                 {{productData.name}}
             </h2>
+            
+            <hr class="mt-2 border-black">
 
-            <p class="text-xl my-4">S/ {{productData.sale_price}}</p>
+            <p class="my-4 lg:text-xl">S/ {{productData.sale_price}}</p>
 
             <div class="flex items-center gap-4">
                 <div class="flex items-center">
@@ -19,7 +21,7 @@
                         (click)="removeQuantity()">
                         <mat-icon class="w-0">remove</mat-icon>
                     </button>
-                    <p class="mx-3 text-lg">{{quantity}}</p>
+                    <p class="mx-3">{{quantity}}</p>
                     &nbsp;
                     <button class="bg-gray-400 text-center flex items-center p-1.5 rounded-md" (click)="addQuantity()">
                         <mat-icon>add</mat-icon>
@@ -27,7 +29,7 @@
                 </div>
 
                 <div>
-                    <p class="text-lg">Stock: {{productData.stock}}</p>
+                    <p>Stock: {{productData.stock}}</p>
                 </div>
             </div>
 
@@ -36,17 +38,14 @@
 
         <div class="my-6">
             <button class="bg-buttons hover:bg-buttons-hover dark:bg-buttons-dark 
-                px-5 py-2 rounded-md text-lg w-full md:w-80"
-                (click)="addShoppingCart()"
-                >
+                px-5 py-2 lg:px-0 rounded-md text-lg w-full md:w-80" (click)="addShoppingCart()">
                 Agregar al carrito
             </button>
         </div>
 
         <div class="md:w-product-descrition">
-            <h3 class="text-xl">Descripción:</h3>
-            <p class="">{{productData.description}}</p>
+            <h3 class="text-3xl lg:text-lg">Descripción:</h3>
+            <p>{{productData.description}}</p>
         </div>
     </div>
 </div>
-
