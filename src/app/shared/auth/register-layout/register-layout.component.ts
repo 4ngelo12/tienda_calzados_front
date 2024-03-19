@@ -50,15 +50,20 @@ export class RegisterLayoutComponent implements OnInit {
 
       this.user.register(this.RegisterData).subscribe({
         next: (res: any) => {
-          this.snack.open('User registrado', 'Aceptar', {
-            duration: 5000
+          this.snack.open('Usuario registrado', 'Aceptar', {
+            horizontalPosition: 'end',
+            duration: 5000,
+            panelClass: ['bg-green-600', 'text-white', 'custom-close-button-text', 'dark:bg-green-800'],
           });
 
           this.parentRegisterForm.reset();
         },
         error: (err) => {
+          console.log(err);
           this.snack.open('Error al registrar User', 'Aceptar', {
-            duration: 5000
+            horizontalPosition: 'end',
+            duration: 5000,
+            panelClass: ['bg-red-600', 'text-white', 'custom-close-button-text', 'dark:bg-red-800'],
           });
         },
         complete: () => {
@@ -75,29 +80,29 @@ export class RegisterLayoutComponent implements OnInit {
 
   // Validaciones de formulario
 
-  getErrorMessageName() {
-    if (this.parentRegisterForm.get('name')!.hasError('required')) {
-      return 'Debes ingresar un valor';
-    }
-    if (this.parentRegisterForm.get('name')!.hasError('maxlength')) {
-      return 'El valor ingresado es demasiado largo';
-    }
+  // getErrorMessageName() {
+  //   if (this.parentRegisterForm.get('name')!.hasError('required')) {
+  //     return 'Debes ingresar un valor';
+  //   }
+  //   if (this.parentRegisterForm.get('name')!.hasError('maxlength')) {
+  //     return 'El valor ingresado es demasiado largo';
+  //   }
 
-    return this.parentRegisterForm.get('name')!.hasError('minlength') ?
-      'El valor ingresado no es lo suficientemente largo' : '';
-  }
+  //   return this.parentRegisterForm.get('name')!.hasError('minlength') ?
+  //     'El valor ingresado no es lo suficientemente largo' : '';
+  // }
 
-  getErrorMessageLastName() {
-    if (this.parentRegisterForm.get('lastname')!.hasError('required')) {
-      return 'Debes ingresar un valor';
-    }
-    if (this.parentRegisterForm.get('lastname')!.hasError('maxlength')) {
-      return 'El valor ingresado es demasiado largo';
-    }
+  // getErrorMessageLastName() {
+  //   if (this.parentRegisterForm.get('lastname')!.hasError('required')) {
+  //     return 'Debes ingresar un valor';
+  //   }
+  //   if (this.parentRegisterForm.get('lastname')!.hasError('maxlength')) {
+  //     return 'El valor ingresado es demasiado largo';
+  //   }
 
-    return this.parentRegisterForm.get('lastname')!.hasError('minlength') ?
-      'El valor ingresado no es lo suficientemente largo' : '';
-  }
+  //   return this.parentRegisterForm.get('lastname')!.hasError('minlength') ?
+  //     'El valor ingresado no es lo suficientemente largo' : '';
+  // }
 
   getErrorMessageEmail() {
     if (this.parentRegisterForm.get('email')!.hasError('required')) {

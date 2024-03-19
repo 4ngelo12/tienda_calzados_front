@@ -38,16 +38,15 @@ export class LoginLayoutComponent implements OnInit {
           this.user.getCurrentUser().subscribe(
             (user: any) => {
               this.lsService.setUser(user);
-              this.router.navigate(['/home']).then(() => {
-                // window.location.reload();
-              });
-
+              this.router.navigate(['/home'])
             }
           )
         },
         error: (err: any) => {
-          this.snack.open(err.error.message, 'Cerrar', {
-            duration: 2000
+          this.snack.open(err.error.message ? err.error.message : "Hubo un error al autenticar su cuenta", 'Cerrar', {
+            horizontalPosition: 'end',
+            duration: 5000,
+            panelClass: ['bg-red-600', 'text-white', 'custom-close-button-text', 'dark:bg-red-800'],
           });
         }
       }
@@ -58,11 +57,11 @@ export class LoginLayoutComponent implements OnInit {
 
   // Redirecciones
   showRegister() {
-    this.router.navigate(['/auth/register']);	
+    this.router.navigate(['/auth/register']);
   }
 
   showRecoveryPassword() {
-    this.router.navigate(['/auth/recovery-password']);	
+    this.router.navigate(['/auth/recovery-password']);
   }
 
   // Validaciones de formulario
