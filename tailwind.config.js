@@ -24,9 +24,6 @@ module.exports = {
       height: {
         'screen-60': '60vh',
         'screen-80': '80vh',
-        'home-cards': '27.688rem',
-        'home-cards-md': '29.688rem',
-        'home-cards-mobile': '33.72rem',
       },
       width: {
         'product-descrition': '38rem'
