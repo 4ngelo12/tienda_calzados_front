@@ -58,7 +58,6 @@ export class ProductComponent implements OnInit {
           horizontalPosition: 'end',
           duration: 5000,
           panelClass: ['bg-green-600', 'text-white', 'custom-close-button-text', 'dark:bg-green-800'],
-
         });
         this.shoppihnCartResponse = res;
       }

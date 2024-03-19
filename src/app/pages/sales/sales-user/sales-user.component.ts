@@ -34,6 +34,7 @@ export class SalesUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.lsService.getUser().id;
+    
     this.saleService.getSalesByUserId(this.userId)
       .subscribe((data: any) => {
         this.saleData = data.content;

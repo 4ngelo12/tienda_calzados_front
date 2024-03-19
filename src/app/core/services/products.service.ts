@@ -12,7 +12,7 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
   public getProducts(): Observable<Products[]> {
-    return this.http.get<ProductsResponse>(`${baseUrl}/products?size=6`)
+    return this.http.get<ProductsResponse>(`${baseUrl}/products?size=8`)
       .pipe(
         map( this.transformData)
       );

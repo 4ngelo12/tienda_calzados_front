@@ -16,7 +16,7 @@
             </a>
         </button>
 
-        <button mat-icon-button (click)="showShoppingCart()">
+        <button *ngIf="token" mat-icon-button (click)="showShoppingCart()">
             <mat-icon class="text-4xl">shopping_cart</mat-icon>
         </button>
 

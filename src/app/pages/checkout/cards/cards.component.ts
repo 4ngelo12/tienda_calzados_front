@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDatepicker, MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Sale, ShoppingCartByUserId } from 'src/app/core/interfaces';
 import { LocalStorageService, SaleService, ShoppingCartService } from 'src/app/core/services';
@@ -20,7 +21,7 @@ export class CardsComponent implements OnInit {
   userId!: number;
 
   constructor(private saleService: SaleService, private cartService: ShoppingCartService, private lsService: LocalStorageService,
-    private fb: FormBuilder, public route: Router) {
+    private fb: FormBuilder, public route: Router, private snack: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -64,12 +65,24 @@ export class CardsComponent implements OnInit {
 
       this.saleService.postSale(this.saleData).subscribe({
         next: (res: any) => {
+          this.snack.open('Pago exitoso', 'Cerrar', {
+            horizontalPosition: 'end',
+            duration: 5000,
+            panelClass: ['bg-green-600', 'text-white', 'custom-close-button-text', 'dark:bg-green-800'],
+          });
           this.cartService.deleteShoppingCartByUserId(res.userId).subscribe({
             next: () => {
               this.route.navigate(['/']);
             }
           });
         },
+        error: (err: any) => {
+          this.snack.open('Error al procesar el pago', 'Cerrar', {
+            horizontalPosition: 'end',
+            duration: 5000,
+            panelClass: ['bg-red-600', 'text-white', 'custom-close-button-text', 'dark:bg-red-800'],
+          });
+        }
       })
     }
   }

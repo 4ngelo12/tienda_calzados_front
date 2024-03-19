@@ -15,7 +15,7 @@ export class SaleService {
   }
 
   public getSalesByUserId(id: number) {
-    return this.http.get(`${baseUrl}/sale/${id}?size=6`);
+    return this.http.get(`${baseUrl}/sale/${id}?size=100`);
   }
 
   public getSaleDetails(saleId: number) {
