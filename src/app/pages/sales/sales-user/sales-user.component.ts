@@ -19,8 +19,14 @@ import { GetSaleResponse, LocalStorageService, SaleDetails, SaleService } from '
 export class SalesUserComponent implements OnInit {
 
   userId!: number
-  columnNames: string[] = ['code', 'purchase_date', 'total'];
-  columnsToDisplayWithExpand = [...this.columnNames, 'expand'];
+  columnNamesDisplay: string[] = ['code', 'purchase_date', 'total'];
+  columnsToDisplayWithExpand = [...this.columnNamesDisplay, 'expand'];
+  columnMapping: { [key: string]: string } = {
+    'code': 'Código',
+    'purchase_date': 'Fecha de Compra',
+    'total': 'Total'
+    // Puedes agregar más mapeos según sea necesario
+  };
   dataSource!: MatTableDataSource<GetSaleResponse>;
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   showDetails: boolean = false;

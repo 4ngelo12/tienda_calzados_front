@@ -10,7 +10,7 @@ import { LocalStorageService, ProductsService } from 'src/app/core/services';
 })
 export class HomeComponent implements OnInit {
   public page: number = 0;
-  itemsPerPage: number = 4;
+  itemsPerPage: number = 8;
   ProductData: Products[] = [];
   search: string = '';
 

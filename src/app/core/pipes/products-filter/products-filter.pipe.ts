@@ -10,9 +10,9 @@ export class ProductsFilterPipe implements PipeTransform {
     if (search.length > 0) {
       return value.filter(
         product => product.name.toLowerCase().includes(search.toLowerCase())
-      ).slice(page, page + 4);
+      ).slice(page, page + 8);
     }
 
-    return value.slice(page, page + 4);
+    return value.slice(page, page + 8);
   }
 }

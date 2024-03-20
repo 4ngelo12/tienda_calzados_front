@@ -29,8 +29,8 @@
                                         <li *ngFor="let item of data" class="flex py-6">
                                             <div
                                                 class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                                <img src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg"
-                                                    alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+                                                <img src="../../../assets/img/products/{{item.products.image}}.png"
+                                                    alt="Imagen del producto {{item.products.name}}"
                                                     class="h-full w-full object-cover object-center">
                                             </div>
 
@@ -75,9 +75,10 @@
                             <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                             <div class="mt-6">
                                 <a class="flex items-center justify-center rounded-md border border-transparent 
-                                    bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700
-                                    hover:cursor-pointer" (click)="showCheckout(getTotaPrice())">
-                                    Checkout
+                                    bg-buttons dark:bg-buttons-dark px-6 py-3 text-base font-medium text-white shadow-sm
+                                    hover:bg-buttons-hover hover:cursor-pointer"
+                                    (click)="showCheckout(getTotaPrice())">
+                                    Realizar Pago
                                 </a>
                             </div>
                         </div>
