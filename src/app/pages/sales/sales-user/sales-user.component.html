@@ -7,8 +7,8 @@
     <ng-container matColumnDef="expand">
         <th mat-header-cell *matHeaderCellDef aria-label="row actions" class="text-base text-black">Detalles</th>
         <td mat-cell *matCellDef="let element">
-            <button mat-icon-button aria-label="expand row"
-                (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation(); getDetails(element.id)">
+            <button mat-icon-button aria-label="expand row" (click)="(expandedElement = expandedElement === element ? null : element);
+                     $event.stopPropagation(); getDetails(element.id)">
                 <mat-icon>{{expandedElement === element ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
             </button>
         </td>
@@ -18,31 +18,31 @@
     <ng-container matColumnDef="expandedDetail">
         <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
             <div class="overflow-hidden" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-                <ul>
-                    <li *ngFor="let item of detailData" class="w-full px-5  gap-4">
-                        <div class="flex items-center justify-evenly">
-                            <div class="example-element-diagram"> {{item.products.image}} </div>
+                <ul class="md:grid md:grid-cols-2 gap-x-5">
+                    <li *ngFor="let item of detailData" class="w-full px-5">
+                        <div class="flex items-center flex-col md:flex-row md:gap-5">
+                            <img src="../../../../assets/img/products/{{item.products.image}}.png"
+                                alt="imagen del producto {{item.products.name}}"
+                                class="bg-general rounded-md my-3 h-fit md:w-1/3">
 
-                            <div class="my-5">
+                            <div class="my-2 md:my-5 mx-3 text-lg md:text-base">
                                 <p>Nombre: {{item.products.name}}</p>
                                 <p>Cantidad: {{item.quantity}}</p>
+                                <p>Talla: {{item.products.size}}</p>
                                 <p>Sub Total: S/ {{item.subTotal}}</p>
                             </div>
                         </div>
 
-                        <hr *ngIf="detailData.length > 1" class="border-black w-full">
+                        <hr *ngIf="detailData.length > 2 && item !== detailData[detailData.length - 1]"
+                            class="border-black w-full">
                     </li>
-
-
-
                 </ul>
             </div>
         </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
-    <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;" class="example-element-row"
-        [class.example-expanded-row]="expandedElement === element"
+    <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;"
         (click)="expandedElement = expandedElement === element ? null : element">
     </tr>
     <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>

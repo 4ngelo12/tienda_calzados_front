@@ -19,17 +19,17 @@ export interface SaleUser {
 }
 
 export interface SaleDetails {
-    id:       number;
+    id: number;
     quantity: number;
     subTotal: number;
     products: detailProd;
 }
 
 export interface detailProd {
-    code:     string;
-    name:     string;
-    image:    string;
-    size:     number;
-    brand:    string;
+    code: string;
+    name: string;
+    image: string;
+    size: number;
+    brand: string;
     category: Category;
 }
