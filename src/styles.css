@@ -46,3 +46,12 @@ body {
 .custom-close-button-text .mat-button-wrapper {
   color: white; 
 }
+
+.mat-form-field.inputs .mat-form-field-underline {
+  background-color: white; /* Cambia el color de fondo del input a blanco */
+}
+
+/* Estilos CSS para cambiar el color del texto del placeholder */
+.mat-form-field.inputs ::placeholder {
+  color: white; /* Cambia el color del texto del placeholder a blanco */
+}

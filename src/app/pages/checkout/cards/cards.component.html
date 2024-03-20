@@ -17,47 +17,50 @@
                     <legend class="text-lg py-1">Datos de la Tarjeta</legend>
                     <hr class="w-full border-2 border-blue-500">
                     <div class="flex flex-col my-2">
-                        <mat-form-field class="py-2">
-                            <mat-label>Nombre del Titular</mat-label>
-                            <input matInput placeholder="Ex. José" formControlName="name">
+                        <mat-form-field class="py-2 dark:text-white">
+                            <mat-label class="dark:text-white">Nombre del Titular</mat-label>
+                            <input matInput class="dark:placeholder:text-white" placeholder="Ex. José"
+                                formControlName="name">
                             <mat-error>{{getNameErrorMessage()}}</mat-error>
                             <mat-icon matSuffix>person</mat-icon>
                         </mat-form-field>
 
-                        <mat-form-field class=" dark:text-white">
-                            <mat-label class="dark:text-white">Correo</mat-label>
-                            <input matInput placeholder="Ex. correo@mail.com" formControlName="email" required>
+                        <mat-form-field class="py-2 dark:text-white">
+                            <mat-label class="dark:text-white" class="dark:text-white">Correo</mat-label>
+                            <input matInput class="dark:placeholder:text-white" placeholder="Ex. correo@mail.com"
+                                formControlName="email" required>
                             <mat-error>{{getEmailErrorMessage()}}</mat-error>
                             <mat-icon matSuffix>mail</mat-icon>
                         </mat-form-field>
 
-                        <mat-form-field class="py-2">
-                            <mat-label>Número de Tarjeta</mat-label>
-                            <input matInput placeholder="Ex. 4594 9756 5115 4446" formControlName="cardNumber"
-                                (input)="formatCardNumber($event)">
+                        <mat-form-field class="py-2 dark:text-white">
+                            <mat-label class="dark:text-white">Número de Tarjeta</mat-label>
+                            <input matInput class="dark:placeholder:text-white" placeholder="Ex. 4594 9756 5115 4446"
+                                formControlName="cardNumber" (input)="formatCardNumber($event)">
                             <mat-error>{{getCardNumberErrorMessage()}}</mat-error>
                             <mat-icon matSuffix>credit_card</mat-icon>
                         </mat-form-field>
 
-                        <mat-form-field class="py-2">
-                            <mat-label class="">Fecha de Expiración</mat-label>
-                            <input matInput [matDatepicker]="picker" formControlName="expiration" placeholder="MM/YYYY">
+                        <mat-form-field class="py-2 dark:text-white">
+                            <mat-label class="dark:text-white">Fecha de Expiración</mat-label>
+                            <input matInput class="dark:placeholder:text-white" [matDatepicker]="picker"
+                                formControlName="expiration" placeholder="MM/YYYY">
                             <mat-error>{{getExpirationErrorMessage()}}</mat-error>
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker startView="multi-year" [panelClass]="'dark'"></mat-datepicker>
                         </mat-form-field>
 
-                        <mat-form-field class="py-2">
-                            <mat-label>CCV</mat-label>
-                            <input matInput placeholder="Ex. 123" pattern="[0-9]{3}" type="number" formControlName="ccv"
-                                (input)="truncateValue($event)">
+                        <mat-form-field class="py-2 dark:text-white">
+                            <mat-label class="dark:text-white">CCV</mat-label>
+                            <input matInput class="dark:placeholder:text-white" placeholder="Ex. 123" pattern="[0-9]{3}"
+                                type="number" formControlName="ccv" (input)="truncateValue($event)">
                             <mat-error>{{getCCVErrorMessage()}}</mat-error>
                             <mat-icon matSuffix>credit_card</mat-icon>
                         </mat-form-field>
                     </div>
 
                     <button mat-raised-button type="submit"
-                        class="w-full bg-buttons dark:bg-buttons-dark hover:bg-buttons-hover">Submit</button>
+                        class="w-full bg-buttons dark:bg-buttons-dark hover:bg-buttons-hover text-white">Submit</button>
                 </fieldset>
             </form>
         </div>

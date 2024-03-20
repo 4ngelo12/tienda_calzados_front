@@ -10,20 +10,21 @@
             <h2 class="text-4xl lg:text-2xl font-medium">
                 {{productData.name}}
             </h2>
-            
+
             <hr class="mt-2 border-black">
 
             <p class="my-4 lg:text-xl">S/ {{productData.sale_price}}</p>
 
             <div class="flex items-center gap-4">
                 <div class="flex items-center">
-                    <button class="bg-gray-400 text-center flex items-center p-1.5 rounded-md"
+                    <button class="bg-gray-400 dark:bg-neutral-700 text-center flex items-center p-1.5 rounded-md"
                         (click)="removeQuantity()">
                         <mat-icon class="w-0">remove</mat-icon>
                     </button>
                     <p class="mx-3">{{quantity}}</p>
                     &nbsp;
-                    <button class="bg-gray-400 text-center flex items-center p-1.5 rounded-md" (click)="addQuantity()">
+                    <button class="bg-gray-400 dark:bg-neutral-700 text-center flex items-center p-1.5 rounded-md"
+                        (click)="addQuantity()">
                         <mat-icon>add</mat-icon>
                     </button>
                 </div>

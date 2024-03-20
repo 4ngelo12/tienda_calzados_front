@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
 
   token: any;
   navbar!: ElementRef;
+  themeMode: boolean = false;
   @ViewChild(ShoppingCartComponent) shoppingCart!: ShoppingCartComponent;
 
   constructor(private router: Router, private user: UsersService, private ls: LocalStorageService, private renderer: Renderer2,
@@ -82,6 +83,11 @@ export class NavbarComponent implements OnInit {
 
   tokenAvailable() {
     this.token = this.ls.getToken();
+  }
+
+  darkMode() {
+    this.themeMode = !this.themeMode;
+    document.querySelector('html')?.classList.toggle('dark');
   }
 
   rechargeComponent() {

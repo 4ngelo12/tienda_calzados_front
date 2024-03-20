@@ -5,15 +5,15 @@
         <div class="absolute inset-0 overflow-hidden">
             <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
                 <div id="shopping-cart-list" class="pointer-events-auto w-screen max-w-md">
-                    <div class="flex h-full flex-col bg-white shadow-xl">
+                    <div class="flex h-full flex-col bg-white dark:bg-screen-dark shadow-xl">
                         <div class="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                             <div class="flex items-start justify-between">
-                                <h2 class="text-lg font-medium text-gray-900" id="slide-over-title">Shopping cart</h2>
+                                <h2 class="text-lg font-medium dark:text-white" id="slide-over-title">Carrito de compras
+                                </h2>
                                 <div class="ml-3 flex h-7 items-center">
                                     <button type="button" class="relative -m-2 p-2 text-gray-400 hover:text-gray-500"
                                         (click)="closeComponent()">
                                         <span class="absolute -inset-0.5"></span>
-                                        <span class="sr-only">Close panel</span>
                                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                             stroke="currentColor" aria-hidden="true">
                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -30,31 +30,33 @@
                                             <div
                                                 class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                                 <img src="../../../assets/img/products/{{item.products.image}}.png"
-                                                    alt="Imagen del producto {{item.products.name}}"
-                                                    class="h-full w-full object-cover object-center">
+                                                    alt="Imagen del producto {{item.products.name}}" class="h-full w-full object-cover
+                                                     bg-general dark:bg-general-dark object-center">
                                             </div>
 
                                             <div class="ml-4 flex flex-1 flex-col">
                                                 <div>
-                                                    <div
-                                                        class="flex justify-between text-base font-medium text-gray-900">
+                                                    <div class="flex justify-between text-base font-medium text-gray-900 
+                                                         dark:text-white">
                                                         <h3>
-                                                            <a class="cursor-pointer"
+                                                            <a class="cursor-pointer dark:text-white"
                                                                 (click)="showProduct(item.products.id)">
                                                                 {{item.products.name}}
                                                             </a>
                                                         </h3>
-                                                        <p class="ml-4">S/{{item.subTotal}}</p>
+                                                        <p class="ml-4 dark:text-white">S/{{item.subTotal}}</p>
                                                     </div>
-                                                    <p class="mt-1 text-sm text-gray-500">Talla {{item.products.size}}
+                                                    <p class="mt-1 text-sm text-gray-500 dark:text-white">Talla
+                                                        {{item.products.size}}
                                                     </p>
                                                 </div>
                                                 <div class="flex flex-1 items-end justify-between text-sm">
-                                                    <p class="text-gray-500">Cantidad {{item.amount}}</p>
+                                                    <p class="text-gray-500 dark:text-white">Cantidad {{item.amount}}
+                                                    </p>
 
                                                     <div class="flex">
-                                                        <button type="button"
-                                                            class="font-medium text-indigo-600 hover:text-indigo-500"
+                                                        <button type="button" class="font-medium text-blue-600 dark:text-sky-500
+                                                             hover:text-indigo-500"
                                                             (click)="RemoveFromShoppingCart(item.id)">
                                                             Retirar
                                                         </button>
@@ -68,11 +70,11 @@
                         </div>
 
                         <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
-                            <div class="flex justify-between text-base font-medium text-gray-900">
+                            <div class="flex justify-between text-base font-medium text-gray-900 dark:text-white">
                                 <p>Subtotal</p>
                                 <p>S/{{getTotaPrice()}}</p>
                             </div>
-                            <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+
                             <div class="mt-6">
                                 <a class="flex items-center justify-center rounded-md border border-transparent 
                                     bg-buttons dark:bg-buttons-dark px-6 py-3 text-base font-medium text-white shadow-sm

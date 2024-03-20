@@ -80,29 +80,29 @@ export class RegisterLayoutComponent implements OnInit {
 
   // Validaciones de formulario
 
-  // getErrorMessageName() {
-  //   if (this.parentRegisterForm.get('name')!.hasError('required')) {
-  //     return 'Debes ingresar un valor';
-  //   }
-  //   if (this.parentRegisterForm.get('name')!.hasError('maxlength')) {
-  //     return 'El valor ingresado es demasiado largo';
-  //   }
+  getErrorMessageName() {
+    if (this.parentRegisterForm.get('name')!.hasError('required')) {
+      return 'Debes ingresar un valor';
+    }
+    if (this.parentRegisterForm.get('name')!.hasError('maxlength')) {
+      return 'El valor ingresado es demasiado largo';
+    }
 
-  //   return this.parentRegisterForm.get('name')!.hasError('minlength') ?
-  //     'El valor ingresado no es lo suficientemente largo' : '';
-  // }
+    return this.parentRegisterForm.get('name')!.hasError('minlength') ?
+      'El valor ingresado no es lo suficientemente largo' : '';
+  }
 
-  // getErrorMessageLastName() {
-  //   if (this.parentRegisterForm.get('lastname')!.hasError('required')) {
-  //     return 'Debes ingresar un valor';
-  //   }
-  //   if (this.parentRegisterForm.get('lastname')!.hasError('maxlength')) {
-  //     return 'El valor ingresado es demasiado largo';
-  //   }
+  getErrorMessageLastName() {
+    if (this.parentRegisterForm.get('lastname')!.hasError('required')) {
+      return 'Debes ingresar un valor';
+    }
+    if (this.parentRegisterForm.get('lastname')!.hasError('maxlength')) {
+      return 'El valor ingresado es demasiado largo';
+    }
 
-  //   return this.parentRegisterForm.get('lastname')!.hasError('minlength') ?
-  //     'El valor ingresado no es lo suficientemente largo' : '';
-  // }
+    return this.parentRegisterForm.get('lastname')!.hasError('minlength') ?
+      'El valor ingresado no es lo suficientemente largo' : '';
+  }
 
   getErrorMessageEmail() {
     if (this.parentRegisterForm.get('email')!.hasError('required')) {

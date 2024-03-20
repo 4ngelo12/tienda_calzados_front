@@ -31,9 +31,10 @@
       <div>
         <form [formGroup]="parentLoginForm" (ngSubmit)="loginSubmit()">
           <div class="flex flex-col mx-6 lg:mx-14">
-            <mat-form-field class="mb-4 dark:text-white">
+            <mat-form-field class="mb-4 dark:text-white ">
               <mat-label class="dark:text-white">Correo</mat-label>
-              <input matInput placeholder="Ex. correo@mail.com" formControlName="username" required>
+              <input matInput class="dark:placeholder:text-white" placeholder="Ex. correo@mail.com"
+                formControlName="username" required>
               <mat-error>{{getErrorMessageEmail()}}</mat-error>
               <mat-icon matSuffix>mail</mat-icon>
             </mat-form-field>
@@ -41,19 +42,21 @@
             <div class="mb-4">
               <mat-form-field class="w-full dark:text-white">
                 <mat-label class="dark:text-white">Contraseña</mat-label>
-                <input matInput placeholder="Ex. **************" formControlName="password" required
-                  [type]="hide ? 'password' : 'text'">
-                <mat-error>{{getErrorMessagePassword()}}</mat-error>
+                <input matInput class="dark:placeholder:text-white" placeholder="Ex. **************"
+                  formControlName="password" required [type]="hide ? 'password' : 'text'">
+                <mat-error class="">{{getErrorMessagePassword()}}</mat-error>
                 <mat-icon matSuffix><button type="button"
                     (click)="togglePasswordVisibility()">password</button></mat-icon>
               </mat-form-field>
-              <a (click)="showRecoveryPassword()" class="lg:text-sm login-url">¿Has olvidado tu constraseña?</a>
+              <a (click)="showRecoveryPassword()" class="lg:text-sm login-url dark:text-gray-400">¿Has olvidado tu
+                constraseña?</a>
             </div>
 
             <div class="mt-7 mb-6">
               <button mat-raised-button type="submit"
                 class="w-full bg-buttons btn-text hover:bg-buttons-hover">Ingresar</button>
-              <p class="mt-2 lg:text-sm">¿Eres nuevo aquí?, <a (click)="showRegister()" class="login-url">Crea
+              <p class="mt-2 lg:text-sm">¿Eres nuevo aquí?, <a (click)="showRegister()"
+                  class="login-url dark:text-gray-400"> Crea
                   una cuenta ahora</a></p>
             </div>
           </div>

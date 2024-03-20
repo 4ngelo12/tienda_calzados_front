@@ -15,7 +15,7 @@ module.exports = {
         'screen-dark': '#1B2631',
         'buttons-dark': '#398fe5',
         'buttons--darkhover': '#2e7ac2',
-        'component-dark': '#434E5A',
+        'component-dark': '#444B51',
         'buttons-disabled': '#398fe580',
       },
       width: {
