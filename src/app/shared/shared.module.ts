@@ -6,14 +6,11 @@ import { NavbarComponent } from './navbar';
 import { NotfoundComponent } from './notfound';
 import { FooterComponent } from './footer/footer.component';
 import { ShoppingCartComponent } from './shopping-cart';
-import { LoginLayoutComponent, RegisterLayoutComponent } from './auth';
 
 
 
 @NgModule({
   declarations: [
-    LoginLayoutComponent,
-    RegisterLayoutComponent,
     NavbarComponent,
     NotfoundComponent,
     FooterComponent,
@@ -27,8 +24,6 @@ import { LoginLayoutComponent, RegisterLayoutComponent } from './auth';
   ],
   exports: [
     NavbarComponent,
-    LoginLayoutComponent,
-    RegisterLayoutComponent,
     NotfoundComponent,
     FooterComponent,
     ShoppingCartComponent,

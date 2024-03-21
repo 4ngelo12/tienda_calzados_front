@@ -10,6 +10,7 @@ import { SharedModule } from './shared';
 import { HomeModule, ProductsModule, CheckoutModule, UsersModule, AuthModule, SalesModule } from './pages';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { MaterialModule } from './modules';
+import { AdminModule } from './pages/admin';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MaterialModule } from './modules';
     MaterialModule,
     AppRouterModule,
     HttpClientModule,
+    AdminModule,
     UsersModule,
     SharedModule,
     HomeModule,
