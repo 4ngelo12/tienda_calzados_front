@@ -12,30 +12,33 @@
                     <div class="flex justify-between flex-wrap">
                         <mat-form-field class="w-full lg:w-calc-50 py-2 dark:text-white">
                             <mat-label class="dark:text-white">Nombre</mat-label>
-                            <input matInput class="dark:placeholder:text-white" placeholder="Ex. Mario" formControlName="name">
+                            <input matInput class="dark:placeholder:text-white" placeholder="Ex. Mario"
+                                formControlName="name">
                             <mat-error>{{getErrorMessageName()}}</mat-error>
                             <mat-icon matSuffix>person</mat-icon>
                         </mat-form-field>
 
                         <mat-form-field class="w-full lg:w-calc-50 py-2 dark:text-white">
                             <mat-label class="dark:text-white">Apellido</mat-label>
-                            <input matInput class="dark:placeholder:text-white" placeholder="Ex. Arguedas" formControlName="lastname">
+                            <input matInput class="dark:placeholder:text-white" placeholder="Ex. Arguedas"
+                                formControlName="lastname">
                             <mat-error>{{getErrorMessageLastName()}}</mat-error>
                             <mat-icon matSuffix>person</mat-icon>
                         </mat-form-field>
 
                         <mat-form-field class="w-full lg:w-calc-50 py-2 dark:text-white">
                             <mat-label class="dark:text-white">Correo</mat-label>
-                            <input matInput class="dark:placeholder:text-white" placeholder="Ex. correo@mail.com" formControlName="email">
+                            <input matInput class="dark:placeholder:text-white" placeholder="Ex. correo@mail.com"
+                                formControlName="email">
                             <mat-error>{{getErrorMessageEmail()}}</mat-error>
                             <mat-icon matSuffix>mail</mat-icon>
                         </mat-form-field>
 
                         <mat-form-field class="w-full lg:w-calc-50 py-2 dark:text-white">
                             <mat-label class="dark:text-white">Fecha Nacimiento</mat-label>
-                            <input matInput class="dark:placeholder:text-white" [matDatepicker]="picker" formControlName="birthdate"
-                                placeholder="MM/DD/YYYY">
-                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <input matInput class="dark:placeholder:text-white" [matDatepicker]="picker"
+                                formControlName="birthdate" placeholder="MM/DD/YYYY">
+                            <mat-datepicker-toggle matSuffix class="dark:text-white" [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
                         </mat-form-field>
                     </div>
@@ -45,13 +48,9 @@
                             Actualizar
                         </button>
                         &nbsp;
-                        <button mat-raised-button class="w-full bg-red-500 btn-text hover:bg-red-600" [swal]="{ 
-                                title: '¿Estás seguro?', 
-                                icon: 'warning', 
-                                text: 'Estas a punto de eliminar tu cuenta',
-                                confirmButtonText: 'Aceptar',
-                                showDenyButton: true,
-                                denyButtonText: 'Cancelar'}" (confirm)="deleteUser()">
+                        <button type="button" mat-raised-button class="w-full bg-red-500 btn-text hover:bg-red-600" 
+                        (click)="showAlert()"
+                        >
                             Eliminar
                         </button>
                     </div>

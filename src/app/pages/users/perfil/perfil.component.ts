@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { UpdateUser, UserLs } from 'src/app/core/interfaces';
 import { LocalStorageService, UsersService } from 'src/app/core/services';
+import { ThemesService } from 'src/app/core/services/themes.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-perfil',
@@ -18,9 +21,16 @@ export class PerfilComponent implements OnInit {
   // User data
   userUpdData: UpdateUser = {} as UpdateUser;
   userData: UserLs = {} as UserLs;
+  isDarkTheme: boolean = false;
+  private themeSubscription!: Subscription;
 
-  constructor(private userService: UsersService, private lsService: LocalStorageService, private router: Router,
-    private fb: FormBuilder, private snack: MatSnackBar) { }
+  constructor(private userService: UsersService, private lsService: LocalStorageService, private themeService: ThemesService,
+    private router: Router, private fb: FormBuilder, private snack: MatSnackBar) {
+
+    // this.themeSubscription = this.themeService.darkTheme.subscribe(isDarkTheme => {
+    //   console.log(isDarkTheme) // Muestra la alerta con el tema actualizado
+    // });
+  }
 
   ngOnInit(): void {
     this.userData = this.lsService.getUser();
@@ -30,6 +40,31 @@ export class PerfilComponent implements OnInit {
       lastname: [this.userData.lastName, [Validators.minLength(3), Validators.maxLength(45)]],
       email: [this.userData.email, [Validators.email]],
       birthdate: [this.userData.birthdate, []],
+    });
+
+    this.themeService.darkTheme.subscribe(isDarkTheme => {
+      this.isDarkTheme = isDarkTheme;
+    });
+  }
+
+  showAlert(): void {
+    // Muestra la alerta
+    Swal.fire({
+      title: '¿Estás seguro?',
+      icon: 'warning',
+      text: 'Estás a punto de eliminar tu cuenta',
+      color: this.isDarkTheme ? '#C5C5C5' : '#514E4E',
+      background: this.isDarkTheme ? '#2d2d2d' : '#f2f2f2',
+      showDenyButton: true,
+      confirmButtonText: 'Aceptar',
+      denyButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // El usuario confirmó la acción
+        this.deleteUser();
+      } else if (result.isDenied) {
+        // El usuario negó la acción
+      }
     });
   }
 

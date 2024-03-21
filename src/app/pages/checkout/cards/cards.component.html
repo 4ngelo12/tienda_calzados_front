@@ -47,7 +47,9 @@
                                 formControlName="expiration" placeholder="MM/YYYY">
                             <mat-error>{{getExpirationErrorMessage()}}</mat-error>
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker startView="multi-year" [panelClass]="'dark'"></mat-datepicker>
+                            <mat-datepicker #picker startView="multi-year"
+                                (monthSelected)="setMonthAndYear($event, picker)"
+                                [panelClass]="'dark'"></mat-datepicker>
                         </mat-form-field>
 
                         <mat-form-field class="py-2 dark:text-white">

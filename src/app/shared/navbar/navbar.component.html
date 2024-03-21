@@ -28,10 +28,10 @@
 
         <button *ngIf="token; else elseBlock" mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon class="text-4xl">account_circle</mat-icon>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="showPerfil()">Mi perfil</button>
-                <button mat-menu-item (click)="showSalesDetails()">Mis Compras</button>
-                <button mat-menu-item (click)="logout()">
+            <mat-menu #menu="matMenu" class="dark:bg-slate-500 ">
+                <button mat-menu-item class="dark:text-white" (click)="showPerfil()">Mi perfil</button>
+                <button mat-menu-item class="dark:text-white" (click)="showSalesDetails()">Mis Compras</button>
+                <button mat-menu-item class="dark:text-white" (click)="logout()">
                     Logout
                 </button>
             </mat-menu>

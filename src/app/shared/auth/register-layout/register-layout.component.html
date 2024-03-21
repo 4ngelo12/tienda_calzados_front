@@ -57,7 +57,7 @@
                 <mat-label class="dark:text-white">Fecha Nacimiento</mat-label>
                 <input matInput class="dark:placeholder:text-white" [matDatepicker]="picker" formControlName="birthdate" placeholder="MM/DD/YYYY">
                 <mat-error>{{getErrorMessageBirthDate()}}</mat-error>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker-toggle matSuffix class="dark:text-white" [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
 
@@ -82,7 +82,7 @@
 
             <div class="mt-7 mb-6 flex flex-col items-center">
               <button mat-raised-button type="submit"
-                class="w-full my-1 lg:w-1/2 bg-buttons btn-text hover:bg-buttons-hover">Registrar</button>
+                class="w-full my-1 lg:w-1/2 bg-buttons btn-text hover:bg-buttons-hover dark:text-white">Registrar</button>
               <p class="mt-2 lg:text-sm">¿Ya tienes una cuenta?, <a (click)="showLogin()"
                   class="login-url dark:text-gray-400"> Inicia
                   Sesión</a></p>

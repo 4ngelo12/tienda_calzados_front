@@ -5,11 +5,32 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Sale, ShoppingCartByUserId } from 'src/app/core/interfaces';
 import { LocalStorageService, SaleService, ShoppingCartService } from 'src/app/core/services';
+import * as _moment from 'moment';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MM/YYYY',
+  },
+};
 
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.css'],
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+  ],
 })
 export class CardsComponent implements OnInit {
 
@@ -83,7 +104,7 @@ export class CardsComponent implements OnInit {
             panelClass: ['bg-red-600', 'text-white', 'custom-close-button-text', 'dark:bg-red-800'],
           });
         }
-      })
+      });
     }
   }
 
@@ -100,11 +121,10 @@ export class CardsComponent implements OnInit {
     event.target.value = inputValue.replace(/\s/g, '').replace(/(\d{4})/g, '$1 ').trim();
   }
 
-  setMonthAndYear(event: MatDatepickerInputEvent<Date>, datepicker: MatDatepicker<Date>) {
-    const selectedDate = event.value;
-    const ctrlValue = this.checkoutForm.get('expiration')?.value || new Date();
-    ctrlValue.setMonth(selectedDate?.getMonth());
-    ctrlValue.setFullYear(selectedDate?.getFullYear());
+  setMonthAndYear(normalizedMonthAndYear: _moment.Moment, datepicker: MatDatepicker<_moment.Moment>) {
+    const ctrlValue = this.checkoutForm.get('expiration')?.value;
+    ctrlValue.month(normalizedMonthAndYear.month());
+    ctrlValue.year(normalizedMonthAndYear.year());
     this.checkoutForm.get('expiration')?.setValue(ctrlValue);
     datepicker.close();
   }
