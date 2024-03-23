@@ -5,7 +5,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class LocalStorageService {
-
+  
   constructor() { }
 
   //Guardar token de inicio de sesion
@@ -33,8 +33,16 @@ export class LocalStorageService {
     localStorage.removeItem('token');
   }
 
-  // Eliminar datos de la sesion
+  
+  // Eliminar los datos de la sesion del usuario
+
   public deleteUser() {
+
+    localStorage.removeItem('user');
+  }
+
+  public logout() {
+    localStorage.removeItem('token');
     localStorage.removeItem('user');
   }
 
@@ -50,7 +58,6 @@ export class LocalStorageService {
       const helper = new JwtHelperService();
       const decodedToken = helper.decodeToken(token);
       if (helper.isTokenExpired(token)) {
-
         localStorage.clear();
         return false;
       }

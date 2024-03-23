@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { User, UsersService } from 'src/app/core';
+import { AuthService, User } from 'src/app/core';
 import { CanExit } from 'src/app/core/guards';
 
 @Component({
@@ -16,7 +16,8 @@ export class RegisterComponent implements OnInit, CanExit {
   hidePass = true;
   hidePassConfirm = true;
 
-  constructor(private user: UsersService, private router: Router, private snack: MatSnackBar, private fb: FormBuilder) { }
+  constructor(private auth: AuthService, private router: Router, 
+    private snack: MatSnackBar, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -63,7 +64,7 @@ export class RegisterComponent implements OnInit, CanExit {
         return;
       }
 
-      this.user.register(this.RegisterData).subscribe({
+      this.auth.register(this.RegisterData).subscribe({
         next: (res: any) => {
           this.snack.open('Usuario registrado', 'Aceptar', {
             horizontalPosition: 'end',

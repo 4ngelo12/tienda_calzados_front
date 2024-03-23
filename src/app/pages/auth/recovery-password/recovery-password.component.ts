@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { CanExit, LocalStorageService, RecoveryPassword, UsersService } from 'src/app/core';
-import baseUrl from 'src/app/core/services/helper';
+import { CanExit, RecoveryPassword, UsersService } from 'src/app/core';
 
 @Component({
   selector: 'app-recovery-password',
@@ -15,7 +14,8 @@ export class RecoveryPasswordComponent implements OnInit, CanExit {
   recoveryPasswordData: RecoveryPassword = {} as RecoveryPassword;
   userId!: number;
 
-  constructor(private userService: UsersService, private router: Router, private fb: FormBuilder, private snack: MatSnackBar) { }
+  constructor(private userService: UsersService, private router: Router, private fb: FormBuilder,
+    private snack: MatSnackBar) { }
 
   ngOnInit(): void {
     this.recoveryPasswordForm = this.fb.group({

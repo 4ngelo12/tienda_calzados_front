@@ -10,19 +10,6 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  public register(user: User) {
-    return this.http.post(`${baseUrl}/auth/register`, user);
-  }
-
-  public login(user: Login) {
-    return this.http.post(`${baseUrl}/auth/login`, user);
-  }
-
-  public logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-  }
-
   public sendEmail(data: RecoveryPassword) {
     return this.http.post(`${baseUrl}/sendMail`, data);
   }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { LocalStorageService, Login, UsersService } from 'src/app/core';
+import { AuthService, LocalStorageService, Login, UsersService } from 'src/app/core';
 import { CanExit } from 'src/app/core/guards';
 
 @Component({
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit, CanExit {
   loginData: Login = {} as Login;
   hide = true;
 
-  constructor(private user: UsersService, private lsService: LocalStorageService,
+  constructor(private user: UsersService, private auth: AuthService, private lsService: LocalStorageService,
     private router: Router, private snack: MatSnackBar, private fb: FormBuilder) { }
 
   onExit() {
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit, CanExit {
   loginSubmit() {
     if (this.Loginform.valid) {
       this.loginData = this.Loginform.value;
-      this.user.login(this.loginData).subscribe({
+      this.auth.login(this.loginData).subscribe({
         next: (res: any) => {
           this.lsService.setToken(res.jwTtoken);
         },
