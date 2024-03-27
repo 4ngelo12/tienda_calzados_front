@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { AuthService, LocalStorageService, UsersService } from 'src/app/core/services';
+import { LocalStorageService } from 'src/app/core/services';
 import { ShoppingCartComponent } from '../shopping-cart';
 import { ThemesService } from 'src/app/core/services/themes.service';
 
@@ -16,9 +16,8 @@ export class NavbarComponent implements OnInit {
   themeMode: boolean = false;
   @ViewChild(ShoppingCartComponent) shoppingCart!: ShoppingCartComponent;
 
-  constructor(private router: Router, private user: UsersService, private ls: LocalStorageService,
-    private renderer: Renderer2, private el: ElementRef,
-    private cdr: ChangeDetectorRef, private themeService: ThemesService) {
+  constructor(private router: Router, private ls: LocalStorageService, private renderer: Renderer2, 
+    private el: ElementRef, private cdr: ChangeDetectorRef, private themeService: ThemesService) {
   }
 
   ngOnInit(): void {

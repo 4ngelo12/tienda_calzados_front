@@ -32,7 +32,6 @@ export class LocalStorageService {
   public deleteToken() {
     localStorage.removeItem('token');
   }
-
   
   // Eliminar los datos de la sesion del usuario
 

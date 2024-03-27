@@ -22,14 +22,9 @@ export class PerfilComponent implements OnInit {
   userUpdData: UpdateUser = {} as UpdateUser;
   userData: UserLs = {} as UserLs;
   isDarkTheme: boolean = false;
-  private themeSubscription!: Subscription;
 
-  constructor(private userService: UsersService, private lsService: LocalStorageService, private themeService: ThemesService,
-    private router: Router, private fb: FormBuilder, private snack: MatSnackBar) {
-
-    // this.themeSubscription = this.themeService.darkTheme.subscribe(isDarkTheme => {
-    //   console.log(isDarkTheme) // Muestra la alerta con el tema actualizado
-    // });
+  constructor(private userService: UsersService, private lsService: LocalStorageService,
+    private themeService: ThemesService, private router: Router, private fb: FormBuilder, private snack: MatSnackBar) {
   }
 
   ngOnInit(): void {

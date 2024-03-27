@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ export class FooterComponent implements OnInit {
 
   footer!: ElementRef;
 
-  constructor(private router: Router, private renderer: Renderer2, private el: ElementRef, private cdr: ChangeDetectorRef) { }
+  constructor(private router: Router, private renderer: Renderer2, private el: ElementRef) { }
 
   ngOnInit(): void {
     this.footer = this.el.nativeElement.querySelector('#footer');

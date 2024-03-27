@@ -42,12 +42,12 @@
 
 <div class="px-4 md:px-8 text-white py-8">
     <button class="bg-buttons dark:bg-buttons-dark hover:bg-buttons-hover 
-    disabled:bg-buttons-disabled px-5 py-2 rounded-md" (click)="prevPage()" [disabled]="page === 0">
+    disabled:bg-buttons-disabled dark:disabled:bg-buttons-disabled px-5 py-2 rounded-md" (click)="prevPage()" [disabled]="page === 0">
         Anterior
     </button>
     &nbsp;
     <button class="bg-buttons dark:bg-buttons-dark hover:bg-buttons-hover 
-        disabled:bg-buttons-disabled px-5 py-2 rounded-md" (click)="nextPage()"
+        disabled:bg-buttons-disabled dark:disabled:bg-buttons-disabled px-5 py-2 rounded-md" (click)="nextPage()"
         [disabled]="(ProductData | productsFilter:(page + 4):search).length === 0">
         Siguiente
     </button>
