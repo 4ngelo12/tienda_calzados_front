@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Products } from 'src/app/core/interfaces';
 import { LocalStorageService, ProductsService } from 'src/app/core/services';
+import baseUrl from 'src/app/core/services/helper';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ export class HomeComponent implements OnInit {
   itemsPerPage: number = 8;
   ProductData: Products[] = [];
   search: string = '';
+  imgURL: string = `${baseUrl}/media`;
 
   constructor(private prodService: ProductsService, private lsService: LocalStorageService, private route: Router) { }
 

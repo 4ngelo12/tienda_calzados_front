@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ShoppingCartByUserId } from 'src/app/core/interfaces';
 import { LocalStorageService, ShoppingCartService } from 'src/app/core/services';
+import baseUrl from 'src/app/core/services/helper';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -15,6 +16,7 @@ export class ShoppingCartComponent implements OnInit {
 
   data: ShoppingCartByUserId[] = [];
   userId!: number;
+  imgURL: string = `${baseUrl}/media`;
 
   constructor(private cartService: ShoppingCartService, private lsService: LocalStorageService, private route: Router) { }
 

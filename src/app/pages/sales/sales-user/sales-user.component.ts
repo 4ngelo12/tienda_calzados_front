@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { GetSaleResponse, LocalStorageService, SaleDetails, SaleService } from 'src/app/core';
+import baseUrl from 'src/app/core/services/helper';
 
 @Component({
   selector: 'app-sales-user',
@@ -19,6 +20,7 @@ import { GetSaleResponse, LocalStorageService, SaleDetails, SaleService } from '
 export class SalesUserComponent implements OnInit {
 
   userId!: number
+  imgURL: string = `${baseUrl}/media`;
   columnNamesDisplay: string[] = ['code', 'purchase_date', 'total'];
   columnsToDisplayWithExpand = [...this.columnNamesDisplay, 'expand'];
   columnMapping: { [key: string]: string } = {

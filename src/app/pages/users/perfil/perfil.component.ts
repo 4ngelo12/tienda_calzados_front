@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { UpdateUser, UserLs } from 'src/app/core/interfaces';
 import { LocalStorageService, UsersService } from 'src/app/core/services';
 import { ThemesService } from 'src/app/core/services/themes.service';

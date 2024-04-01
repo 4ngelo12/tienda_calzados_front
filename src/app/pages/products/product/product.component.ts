@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Products, ShoppingCart, ShoppingCartResponse, UserId } from 'src/app/core/interfaces';
 import { ProductsService, ShoppingCartService } from 'src/app/core/services';
+import baseUrl from 'src/app/core/services/helper';
 
 @Component({
   selector: 'app-product',
@@ -19,6 +20,7 @@ export class ProductComponent implements OnInit {
   productData: Products = {} as Products;
   shoppingCart: ShoppingCart = {} as ShoppingCart;
   shoppihnCartResponse: ShoppingCartResponse = {} as ShoppingCartResponse;
+  imgURL: string = `${baseUrl}/media`;
 
   constructor(private prodService: ProductsService, private cartService: ShoppingCartService,
     private activateRoute: ActivatedRoute, private snack: MatSnackBar) { }
