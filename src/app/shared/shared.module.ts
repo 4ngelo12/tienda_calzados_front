@@ -6,7 +6,6 @@ import { NavbarComponent } from './navbar';
 import { NotfoundComponent } from './notfound';
 import { FooterComponent } from './footer/footer.component';
 import { ShoppingCartComponent } from './shopping-cart';
-import { UnauthorizedComponent } from './unauthorized';
 
 
 
@@ -16,7 +15,6 @@ import { UnauthorizedComponent } from './unauthorized';
     NotfoundComponent,
     FooterComponent,
     ShoppingCartComponent,
-    UnauthorizedComponent,
   ],
   imports: [
     CommonModule,
@@ -29,7 +27,6 @@ import { UnauthorizedComponent } from './unauthorized';
     NotfoundComponent,
     FooterComponent,
     ShoppingCartComponent,
-    UnauthorizedComponent,
   ],
 })
 export class SharedModule { }
